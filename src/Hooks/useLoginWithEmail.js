@@ -6,7 +6,7 @@ const useLoginWithEmail = () => {
 
     const loginUser = async (formData) => {
         try {
-            const response = await fetch("http://localhost:3000/api/login/email-password", {
+            const response = await fetch("https://dubizzle-backend.onrender.com/api/login/email-password", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

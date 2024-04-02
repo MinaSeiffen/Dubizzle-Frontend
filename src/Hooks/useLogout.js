@@ -16,7 +16,7 @@ const useLogout = () => {
 
   async function logout() {
     try {
-      const response = await fetch("http://localhost:3000/api/logout", {
+      const response = await fetch("https://dubizzle-backend.onrender.com/api/logout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

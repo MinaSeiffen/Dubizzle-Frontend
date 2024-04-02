@@ -5,7 +5,7 @@ const useSearchForProducts = () => {
 
     const searchForProducts = useCallback(async (search , location , priceRange) => {
         try {
-            const searchResponse = await fetch(`http://localhost:3000/products/search?name=${search}&&location=${location}&&priceRange=${priceRange}`);
+            const searchResponse = await fetch(`https://dubizzle-backend.onrender.com/products/search?name=${search}&&location=${location}&&priceRange=${priceRange}`);
 
             if (!searchResponse.ok) {
                 throw new Error("Failed to fetch search results for products");

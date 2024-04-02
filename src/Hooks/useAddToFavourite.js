@@ -9,7 +9,7 @@ const useAddToFavourite = () => {
             if (!token) {
                 toast.error("Please login first")
             }
-              await fetch('http://localhost:3000/users/addFavourite',
+              await fetch('https://dubizzle-backend.onrender.com/users/addFavourite',
                 {
                     method: 'POST',
                     headers: {

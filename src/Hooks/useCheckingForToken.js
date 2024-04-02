@@ -6,7 +6,7 @@ const useCheckingForToken = () => {
         const token = localStorage.getItem('jwt')
         try {
             if (token){
-                const userResponse = await fetch(`http://localhost:3000/users/getMyProfile`,{
+                const userResponse = await fetch(`https://dubizzle-backend.onrender.com/users/getMyProfile`,{
                     method: 'GET',
                     headers: {
                         "Content-Type": "application/json",

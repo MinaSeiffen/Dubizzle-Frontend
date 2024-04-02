@@ -9,7 +9,7 @@ const UseGetProduct = () => {
 
   async function getProduct() {
     try {
-      const response = await fetch(`http://localhost:3000/products/get/${id}`);
+      const response = await fetch(`https://dubizzle-backend.onrender.com/products/get/${id}`);
       if (!response.ok) {
         throw new Error("Failed to fetch product");
       }
@@ -19,7 +19,7 @@ const UseGetProduct = () => {
       setSubcategoryID(product?.subCategoryId);
 
       const responseSubcategory = await fetch(
-        `http://localhost:3000/sub-category/getId/${subcategoryID}`
+        `https://dubizzle-backend.onrender.com/sub-category/getId/${subcategoryID}`
       );
 
       if (!responseSubcategory.ok) {

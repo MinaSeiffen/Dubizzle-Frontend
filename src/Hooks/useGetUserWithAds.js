@@ -6,7 +6,7 @@ const useGetUserWithAds = () => {
   const getUserWithAds = async (userId) => {
     try {
       const userResponse = await fetch(
-        `http://localhost:3000/users/getUser/${userId}`
+        `https://dubizzle-backend.onrender.com/users/getUser/${userId}`
       );
 
       if (!userResponse.ok) {
@@ -17,7 +17,7 @@ const useGetUserWithAds = () => {
       setUserData(userData);
 
       const productResponse = await fetch(
-        `http://localhost:3000/products/getUserAds/${userId}`
+        `https://dubizzle-backend.onrender.com/products/getUserAds/${userId}`
       );
 
       if (!productResponse.ok) {

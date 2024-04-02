@@ -16,7 +16,7 @@ const useGetConversations = () => {
         const getConversations = async () => {
             setLoading(true);
             try {
-                const res = await fetch("http://localhost:3000/users/sideBar" , {
+                const res = await fetch("https://dubizzle-backend.onrender.com/users/sideBar" , {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",

@@ -6,7 +6,7 @@ const useGetSubcategoryProducts = () => {
     const getSubCategoryProducts = async (selectedSubCategory)=>{
         try {
             const responseSubCate = await fetch(
-                `http://localhost:3000/sub-category/${selectedSubCategory}`
+                `https://dubizzle-backend.onrender.com/sub-category/${selectedSubCategory}`
               );
         
               if (!responseSubCate.ok) {
@@ -16,7 +16,7 @@ const useGetSubcategoryProducts = () => {
               const resCat = await responseSubCate.json();
               const subCategoryId = resCat.subCategoryId
 
-            const responseSubcategoryProducts = await fetch(`http://localhost:3000/sub-category/id/${subCategoryId}`)
+            const responseSubcategoryProducts = await fetch(`https://dubizzle-backend.onrender.com/sub-category/id/${subCategoryId}`)
 
             if (!responseSubcategoryProducts.ok) {
                 throw new Error("faild to get sub-category Products")

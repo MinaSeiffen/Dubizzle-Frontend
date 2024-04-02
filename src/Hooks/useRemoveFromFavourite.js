@@ -9,7 +9,7 @@ const useRemoveFromFavourite = () => {
             if (!token) {
                 toast.error("Please login first")
             }
-              await fetch('http://localhost:3000/users/removeFavourite',
+              await fetch('https://dubizzle-backend.onrender.com/users/removeFavourite',
                 {
                     method: 'DELETE',
                     headers: {

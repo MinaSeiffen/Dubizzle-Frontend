@@ -19,7 +19,7 @@ export const SocketContextProvider = ({children}) => {
 
     useEffect(()=>{
         if (profile) {
-            const socket = io("http://localhost:3000",{
+            const socket = io("https://dubizzle-backend.onrender.com",{
                 query:{
                     userId:profile?._id,
                 }

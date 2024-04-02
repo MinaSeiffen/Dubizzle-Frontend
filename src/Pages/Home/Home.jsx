@@ -29,7 +29,7 @@ export default function Home() {
 
     // http://localhost:3000/categories
     async function getCategory() {
-        await fetch("http://localhost:3000/categories")
+        await fetch("https://dubizzle-backend.onrender.com/categories")
             .then((res) => {
                 return res.json()
             })

@@ -5,7 +5,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const likedProductAction = createAsyncThunk('get/likedProducts', async () => {
     try {
         const token = localStorage.getItem('jwt')
-        const likedProductResponse = await fetch('http://localhost:3000/users/favourites',
+        const likedProductResponse = await fetch('https://dubizzle-backend.onrender.com/users/favourites',
             {
                 method:"GET",
                 headers:{

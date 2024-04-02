@@ -13,7 +13,7 @@ const useUpdateProfile = () => {
             toast.error("Login First")
         }
         try {
-            const updateProfileResponse = await fetch('http://localhost:3000/users', {
+            const updateProfileResponse = await fetch('https://dubizzle-backend.onrender.com/users', {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",

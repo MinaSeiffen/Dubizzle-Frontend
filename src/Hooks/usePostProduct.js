@@ -12,7 +12,7 @@ const usePostProduct = () => {
     }
     try {
       const responseSubCate = await fetch(
-        `http://localhost:3000/sub-category/${selectedSubCategory}`
+        `https://dubizzle-backend.onrender.com/sub-category/${selectedSubCategory}`
       );
 
       if (!responseSubCate.ok) {
@@ -23,7 +23,7 @@ const usePostProduct = () => {
       product.subCategoryId = resCat.subCategoryId;
 
       const addProductResponse = await fetch(
-        "http://localhost:3000/products/add",
+        "https://dubizzle-backend.onrender.com/products/add",
         {
           method: "POST",
           headers: {

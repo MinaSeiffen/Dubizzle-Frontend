@@ -11,7 +11,7 @@ const useSendMessage = () => {
         setLoading(true)
         try {
 
-            const res = await fetch(`http://localhost:3000/chat/send/${selectedConversation._id}`,{
+            const res = await fetch(`https://dubizzle-backend.onrender.com/chat/send/${selectedConversation._id}`,{
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",

@@ -11,7 +11,7 @@ const useGetMessages = () => {
 		const getMessages = async () => {
 			setLoading(true);
 			try {
-				const res = await fetch(`http://localhost:3000/chat/${selectedConversation._id}`,{
+				const res = await fetch(`https://dubizzle-backend.onrender.com/chat/${selectedConversation._id}`,{
 					method: 'GET',
 					headers: {
 						"Content-Type": "application/json",

@@ -12,7 +12,7 @@ const useGetUserData = () => {
                 navigate('/')
                 toast.error('Please login first!')
             }
-            const userDataResponse = await fetch('http://localhost:3000/users/user',
+            const userDataResponse = await fetch('https://dubizzle-backend.onrender.com/users/user',
             {
                 method:'GET',
                 headers:{
