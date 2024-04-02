@@ -30,7 +30,7 @@ const SearchInput = ({name}) => {
         type="text"
         placeholder="Search…"
         className="input w-[480px] input-bordered rounded-full"
-        value={name}
+        value={setSearch(name)}
         onChange={(e) => setSearch(e.target.value)}
       />
       <button type="submit" className="btn btn-circle bg-red-400 text-white">
