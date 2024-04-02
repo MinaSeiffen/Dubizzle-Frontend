@@ -1,0 +1,23 @@
+.btnSaveSearch{
+    border: 1px solid rgba(255, 0, 0, 0.826);
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 15px; 
+    font-weight: bold;
+    width: 11%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.formControl{
+    /* text-black form-control p-3 outline-none border border-slate-500 rounded-md */
+    color:black;
+    padding: 12px;
+    outline: none;
+    border: 1px solid gainsboro;
+    border-radius: 8px;
+    width: 90%;
+    margin-top: 20px;
+    margin-left: 5%;
+}

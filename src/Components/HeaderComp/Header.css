@@ -1,0 +1,65 @@
+.circle {
+    background: rgb(212, 127, 127);
+    border-radius: 100%;
+    padding: 0px 5px;
+    margin: 0px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    margin-right: 5px;
+}
+
+.input-class {
+
+    /* background-color: greenyellow; */
+    border: 3px solid red !important;
+}
+
+.input-class {
+
+    border-color: aqua !important;
+}
+
+.tt1 {}
+
+.hidecontent {}
+
+.dis-flex {}
+
+.show-input-responsive {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .tt1 {
+        position: fixed;
+        bottom: 4%;
+        left: 40%;
+        width: 25%;
+        height: 40px;
+        background: red;
+        z-index: 88;
+    }
+
+    .hidecontent {
+        display: none;
+    }
+
+    .dis-flex {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .show-input-responsive {
+        display: block;
+        position: sticky;
+        top: 0px;
+        z-index: 1;
+        background: #fff;
+        margin:0px 0px ;
+       
+       
+    }
+ 
+}
+
