@@ -4,7 +4,7 @@ import useConversation from "../../Zustand/useConversation";
 import useGetConversations from "../../Hooks/useConversations";
 import toast from "react-hot-toast";
 
-const SearchInput = () => {
+const SearchInput = ({name}) => {
   const [search, setSearch] = useState();
   const { setSelectedConversation } = useConversation();
   const { conversations } = useGetConversations();
@@ -30,7 +30,7 @@ const SearchInput = () => {
         type="text"
         placeholder="Search…"
         className="input w-[480px] input-bordered rounded-full"
-        value={search}
+        value={name}
         onChange={(e) => setSearch(e.target.value)}
       />
       <button type="submit" className="btn btn-circle bg-red-400 text-white">

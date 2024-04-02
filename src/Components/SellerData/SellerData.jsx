@@ -19,6 +19,10 @@ export const SellerData = ({ userData, product }) => {
     setIsShow(!isShow);
   }
 
+  const handleChatting = ()=>{
+    navigate(`/chat/${userData?.profile.name}`)
+  }
+
   return (
     <div className="flex-col relative mt-6 space-y-6 col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
       <div className="flex w-full items-center justify-between space-x-6 p-6">
@@ -63,7 +67,7 @@ export const SellerData = ({ userData, product }) => {
             product?.contact_type.includes("chat")) && (
             <div className="flex my-2 h-[50px] justify-center items-center cursor-pointer bg-red-300 rounded-2xl hover:bg-red-400">
               <a
-                href={`tel:${product?.phoneNumber}`}
+                onClick={()=>{handleChatting()}}
                 className="relative -mr-px inline-flex w-[480px] flex-1 items-center justify-center gap-x-1 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
               >
                 <svg
