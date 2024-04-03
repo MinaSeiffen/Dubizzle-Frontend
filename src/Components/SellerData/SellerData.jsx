@@ -20,7 +20,7 @@ export const SellerData = ({ userData, product }) => {
   }
 
   const handleChatting = ()=>{
-    navigate(`/chat/${userData?.profile.name}`)
+    navigate(`/chat`)
   }
 
   return (
