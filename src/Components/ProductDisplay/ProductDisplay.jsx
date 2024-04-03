@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Zoom from 'react-img-hover-zoom'
 
 export const ProductDisplay = ({ product }) => {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -23,8 +24,10 @@ export const ProductDisplay = ({ product }) => {
                 }`}
                 data-carousel-item
               >
-                <img
-                  src={image}
+                <Zoom
+                  img={image}
+                  zoomScale={1.4}
+                  transitionTime={0.8}
                   className="block absolute top-1/2 left-1/2 h-[600px] md:h-[700px] w-[740px] -translate-x-1/2 -translate-y-1/2"
                   alt={`Slide ${index + 1}`}
                 />
