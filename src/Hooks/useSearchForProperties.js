@@ -9,7 +9,6 @@ const useSearchForProperties = () => {
         try {
             const searchResponse = await fetch(`https://dubizzle-backend.onrender.com/products/search/${propertyType}?location=${locationParam}&rangePrice=${priceRange}&bedRooms=${bedRooms}&area=${area}&bathRooms=${bathRooms}`)
             
-            console.log(propertyType , locationParam , priceRange , bedBath , area , bedRooms , bathRooms)
             if (searchResponse.ok) {
                 const {matchedProducts} = await searchResponse.json();
                 setFoundProperties(matchedProducts)

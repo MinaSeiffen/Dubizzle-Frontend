@@ -8,8 +8,7 @@ const PropertyForm = () => {
     const { register, handleSubmit } = useForm({ mode: 'onChange' });
     const navigate = useNavigate()
     const findProperty = (data) => {
-        navigate(`/searchforproperties?propertyType=${data.propertyType}&&location=${data.location}&&Price=${data.price}&&BedBath=${data.BedBath}&&Area=${data.Area}`)
-        console.log(data)
+        navigate(`/searchforproperties?propertyType=${data.propertyType}&&location=${data.location}&&Price=${data.Price}&&BedBath=${data.BedBath}&&Area=${data.Area}`)
     }
     const [formApear, setformApear] = useState(false)
     const [checkMarkBed, setCheckMarkBed] = useState([false, false, false, false, false])
@@ -59,8 +58,8 @@ const PropertyForm = () => {
         setBed([])
     }
     //////////////////////////////////////
-    const minPriceOption = ['1,000', '5,000', '10,000', '50,000', '100,000', '500,000', '1,000,000', '5,000,000', '10,000,000']
-    const maxPriceOption = ['10,000', '50,000', '100,000', '500,000', '1,000,000', '5,000,000', '10,000,000', '50,000,000', '100,000,000', '500,000,000']
+    const minPriceOption = ['1000', '5000', '10000', '50000', '100000', '500000', '1000000', '5000000', '10000000']
+    const maxPriceOption = ['10000', '50000', '100000', '500000', '1000000', '5000000', '10000000', '50000000', '100000000', '500000000']
 
     const [formArea, setFormArea] = useState(false)
     const [formPrice, setFormPrice] = useState(false)
