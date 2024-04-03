@@ -65,7 +65,7 @@ export const Details = ({ product }) => {
             </div>
             <div>
               <p className="font-semibold my-5">{productData?.price}</p>
-              <p className="font-semibold my-5">{productData?.price_type}</p>
+              <p className="font-semibold my-5">{productData?.price_type ? productData?.price_type  : "Not Available" }</p>
               {(subcategoryName?.includes("Villas") ||
                 subcategoryName?.includes("Apartments")) && (
                 <>
@@ -109,10 +109,10 @@ export const Details = ({ product }) => {
                 (subcategoryName?.includes("Apartments") && (
                   <>
                     <p className="font-semibold my-5">
-                      {productData?.propertyType}
+                      {productData?.propertyType ? productData?.propertyType : "Not Available"}
                     </p>
                     <p className="font-semibold my-5">
-                      {productData?.amenities}
+                      {productData?.amenities ? productData?.amenities : "Not Available"}
                     </p>
                   </>
                 ))}
