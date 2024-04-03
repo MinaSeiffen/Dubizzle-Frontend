@@ -34,7 +34,7 @@ function App() {
         { path: "/search/:name?", element: <SubCategoryProducts /> },
         { path: "/searchforproperties", element: <SubCategoryProducts /> },
         { path: "/sell", element: <SellPage /> },
-        { path: "/chat/:name?", element: <Chat profile={profile} /> },
+        { path: "/chat", element: <Chat profile={profile} /> },
         { path: "/sellform", element: <SellFormPage /> },
         { path: "/product-details/:id", element: <ProductDetails /> },
         { path: "/sellerADs/:id", element: <SellerDetails /> },
