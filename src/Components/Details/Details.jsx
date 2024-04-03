@@ -13,7 +13,7 @@ export const Details = ({ product }) => {
   }, [product , productData]);
   return (
     <div className="w-[740px] relative">
-      <div className="relative flex flex-col mb-5 h-[230px] rounded-xlspace-y-6 col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
+      <div className="relative flex flex-col mb-5 h-[250px] rounded-xlspace-y-6 col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
         <div className="relative p-6">
           <h1 className="mb-2 block font-sans text-3xl font-bold leading-snug tracking-normal text-red-500 antialiased">
             EGP {productData?.price}
@@ -105,8 +105,8 @@ export const Details = ({ product }) => {
                 subcategoryName?.includes("Tablets")) && (
                 <p className="font-semibold my-5">{productData?.brand}</p>
               )}
-              {subcategoryName?.includes("Villas") ||
-                (subcategoryName?.includes("Apartments") && (
+              {(subcategoryName?.includes("Villas") ||
+                subcategoryName?.includes("Apartments")) && (
                   <>
                     <p className="font-semibold my-5">
                       {productData?.propertyType}
@@ -115,7 +115,7 @@ export const Details = ({ product }) => {
                       {productData?.amenities}
                     </p>
                   </>
-                ))}
+                )}
             </div>
           </div>
         </div>
