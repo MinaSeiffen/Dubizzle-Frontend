@@ -2,31 +2,74 @@ import { useEffect, useState } from "react";
 import UseGetProduct from "../../Hooks/UseGetProduct";
 import { useParams } from "react-router-dom";
 import { SellerData } from "../SellerData/SellerData";
+import useRemoveFromFavourite from "../../Hooks/useRemoveFromFavourite";
+import useAddToFavourite from "../../Hooks/useAddToFavourite";
+import { useSelector } from "react-redux";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 export const Details = ({ product }) => {
-  const { subcategoryName, setId , userData } = UseGetProduct();
+  const { subcategoryName, setId, userData } = UseGetProduct();
+  const { addProductToFavourite } = useAddToFavourite();
+  const { RemoveProductFromFavourite } = useRemoveFromFavourite();
+
+  const favourites = useSelector((state) => state.favourite.favourite);
+
+  let favouritesIds = [];
+  if (favourites !== undefined) {
+    favouritesIds = favourites.map((product) => {
+      return product._id;
+    });
+  }
+
+  function check(id) {
+    return favouritesIds.find((prdId) => prdId == id);
+  }
+
+  const addOrRemoveFavourite = (producId) => {
+    if (!check(producId)) {
+      addProductToFavourite(producId);
+    } else {
+      RemoveProductFromFavourite(producId);
+    }
+  };
+
   const [productData, setProductDate] = useState(null);
   const { id } = useParams();
+  const showPrice = (number) => {
+    const formattedNumber = new Intl.NumberFormat("en-EG", {
+      style: "currency",
+      currency: "EGP",
+      minimumFractionDigits: 0, // Specifies the minimum number of fraction digits
+      maximumFractionDigits: 2,
+    }).format(number);
+    return formattedNumber.replace(/\.00$/, "");
+  };
   useEffect(() => {
     setId(id);
     setProductDate(product);
-  }, [product , productData]);
+  }, [product, productData]);
   return (
     <div className="w-[740px] relative">
-      <div className="relative flex flex-col mb-5 h-[250px] rounded-xlspace-y-6 col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
+      <div className="relative flex flex-col mb-5 h-[230px] rounded-xlspace-y-6 col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
         <div className="relative p-6">
-          <h1 className="mb-2 block font-sans text-3xl font-bold leading-snug tracking-normal text-red-500 antialiased">
-            EGP {productData?.price}
+          <div className="flex flex-row">
+          <h1 className="mb-2 flex-1 font-sans text-3xl font-bold leading-snug tracking-normal text-red-500 antialiased">
+            {showPrice(productData?.price)}
           </h1>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-            width="64"
-            height="32"
-            className="absolute right-5 top-6"
+          <button
+          className="flex-"
+          onClick={(e) => {
+            e.stopPropagation();
+            addOrRemoveFavourite(productData._id);
+          }}
           >
-            <path d="M225.8 468.2l-2.5-2.3-175.2-162c-30.7-28.5-48.1-68.5-48.1-110.4v-3.3c0-70.4 50-130.8 119.2-144C158.6 37.9 198.9 47 231 69.6c9 6.4 17.4 13.8 25 22.3c4.2-4.8 8.7-9.2 13.5-13.3c3.7-3.2 7.5-6.2 11.5-9c0 0 0 0 0 0C313.1 47 353.4 37.9 392.8 45.4C462 58.6 512 119.1 512 189.5v3.3c0 41.9-17.4 81.9-48.1 110.4l-175.2 162-2.5 2.3c-8.2 7.6-19 11.9-30.2 11.9s-22-4.2-30.2-11.9zM239.1 145c-.4-.3-.7-.7-1-1.1l-17.8-20c0 0-.1-.1-.1-.1c0 0 0 0 0 0c-23.1-25.9-58-37.7-92-31.2C81.6 101.5 48 142.1 48 189.5v3.3c0 28.5 11.9 55.8 32.8 75.2L256 430.7 431.2 268c20.9-19.4 32.8-46.7 32.8-75.2v-3.3c0-47.3-33.6-88-80.1-96.9c-34-6.5-69 5.4-92 31.2c0 0 0 0-.1 .1s0 0-.1 .1l-17.8 20c-.3 .4-.7 .7-1 1.1c-4.5 4.5-10.6 7-16.9 7s-12.4-2.5-16.9-7z" />
-          </svg>
+            {check(productData?._id) ? (
+              <FaHeart className="text-red-500 lg:w-16 max-lg:w-8" size={29} />
+            ) : (
+              <FaRegHeart className="lg:w-16 max-lg:w-8" size={29} />
+            )}
+          </button>
+            </div>
 
           <h3 className="block text-base font-bold leading-relaxed text-inherit antialiased">
             {productData?.name}
@@ -64,8 +107,10 @@ export const Details = ({ product }) => {
               )}
             </div>
             <div>
-              <p className="font-semibold my-5">{productData?.price}</p>
-              <p className="font-semibold my-5">{productData?.price_type ? productData?.price_type  : "Not Available" }</p>
+              <p className="font-semibold my-5">
+                {showPrice(productData?.price)}
+              </p>
+              <p className="font-semibold my-5">{productData?.price_type}</p>
               {(subcategoryName?.includes("Villas") ||
                 subcategoryName?.includes("Apartments")) && (
                 <>
@@ -107,15 +152,13 @@ export const Details = ({ product }) => {
               )}
               {(subcategoryName?.includes("Villas") ||
                 subcategoryName?.includes("Apartments")) && (
-                  <>
-                    <p className="font-semibold my-5">
-                      {productData?.propertyType}
-                    </p>
-                    <p className="font-semibold my-5">
-                      {productData?.amenities}
-                    </p>
-                  </>
-                )}
+                <>
+                  <p className="font-semibold my-5">
+                    {productData?.propertyType}
+                  </p>
+                  <p className="font-semibold my-5">{productData?.amenities}</p>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -129,7 +172,7 @@ export const Details = ({ product }) => {
         </div>
       </div>
       <div className="xl:hidden mb-5 flex-col w-[740px]">
-        <SellerData userData={userData} product={product}/>
+        <SellerData userData={userData} product={product} />
       </div>
       <div className="relative flex flex-col mb-5 rounded-xlspace-y-6 col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
         <h1 className="p-6 mb-2 block font-sans text-3xl font-bold leading-snug tracking-normal text-black antialiased">

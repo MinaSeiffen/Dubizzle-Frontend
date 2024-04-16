@@ -9,6 +9,7 @@ const PropertyForm = () => {
     const navigate = useNavigate()
     const findProperty = (data) => {
         navigate(`/searchforproperties?propertyType=${data.propertyType}&&location=${data.location}&&Price=${data.Price}&&BedBath=${data.BedBath}&&Area=${data.Area}`)
+        console.log(data)
     }
     const [formApear, setformApear] = useState(false)
     const [checkMarkBed, setCheckMarkBed] = useState([false, false, false, false, false])

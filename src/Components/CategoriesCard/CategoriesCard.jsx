@@ -73,6 +73,15 @@ export default function CategoriesCard({ subcatName, hidden }) {
       return 'just now';
     }
 };
+const showPrice = (number) => {
+  const formattedNumber = new Intl.NumberFormat("en-EG", {
+    style: "currency",
+    currency: "EGP",
+    minimumFractionDigits: 0, // Specifies the minimum number of fraction digits
+    maximumFractionDigits: 2,
+  }).format(number);
+  return formattedNumber.replace(/\.00$/, "");
+};
 
   return (
     <>
@@ -100,7 +109,7 @@ export default function CategoriesCard({ subcatName, hidden }) {
                 catData.images[0] && (
                   <div
                     key={catData.id}
-                    className=" border card-category rounded-t-xl cursor-pointer"
+                    className=" border w-1/4 card-category rounded-t-xl cursor-pointer"
                     onClick={(e) => {
                       e.stopPropagation();
                       goToDetailsPage(catData._id);
@@ -114,7 +123,7 @@ export default function CategoriesCard({ subcatName, hidden }) {
                     <div className="p-3">
                       <div className="grid grid-flow-col justify-between mt-2">
                         <p className="font-sans text-red-600 font-bold">
-                          EGP {catData.price}{" "}
+                           {showPrice(catData.price)}{" "}
                         </p>
                         <button
                         onClick={(e) => {

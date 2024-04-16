@@ -65,7 +65,7 @@ const SellForm = () => {
     }
   
     try {
-      const response = await fetch("https://dubizzle-backend.onrender.com/upload", {
+      const response = await fetch("http://localhost:3000/upload", {
         method: "POST",
         body: formData,
       });
@@ -85,10 +85,6 @@ const SellForm = () => {
       console.error("Error uploading images:", error);
     }
   };
-  
-  
-  
-
   const toggleDropdownLocation = (e) => {
     e.preventDefault();
     setisDropdownLocation((prevState) => !prevState);
@@ -376,7 +372,7 @@ const SellForm = () => {
                       onChange={handleDuplex}
                       className="circle bg-white appearance-none border border-black rounded-full w-4 h-4 checked:bg-red-500 checked:border-transparent"
                     />
-                    <label className="mx-3 relative top-1">Duplex</label>
+                    <label className="mx-3 relative  ">Duplex</label>
                   </div>
                   <div className="p-2 border w-fit flex justify-center items-center">
                     <input
@@ -385,7 +381,7 @@ const SellForm = () => {
                       onChange={handleStandAlone}
                       className="circle appearance-none border border-black rounded-full w-4 h-4 checked:bg-red-500 checked:border-transparent"
                     />
-                    <label className="mx-3 relative top-1">Stand Alone</label>
+                    <label className="mx-3 relative  ">Stand Alone</label>
                   </div>
                   <div className="p-2 border w-fit flex justify-center items-center">
                     <input
@@ -394,7 +390,7 @@ const SellForm = () => {
                       onChange={handleTownHouse}
                       className="circle bg-white appearance-none border border-black rounded-full w-4 h-4 checked:bg-red-500"
                     />
-                    <label className="mx-3 relative top-1">Town House</label>
+                    <label className="mx-3 relative">Town House</label>
                   </div>
                 </div>
               </div>
@@ -425,7 +421,7 @@ const SellForm = () => {
                       onChange={handleBalcony}
                       className="circle bg-white appearance-none border border-black rounded-full w-4 h-4 checked:bg-red-500 checked:border-transparent"
                     />
-                    <label htmlFor="negotiable" className="mx-3 relative top-1">
+                    <label htmlFor="negotiable" className="mx-3 relative  ">
                       Balcony
                     </label>
                   </div>
@@ -437,7 +433,7 @@ const SellForm = () => {
                       onChange={handlekitchen}
                       className="circle appearance-none border border-black rounded-full w-4 h-4 checked:bg-red-500 checked:border-transparent"
                     />
-                    <label htmlFor="exchange" className="mx-3 relative top-1">
+                    <label htmlFor="exchange" className="mx-3 relative  ">
                       Built in Kitchen Appliances
                     </label>
                   </div>
@@ -449,7 +445,7 @@ const SellForm = () => {
                       onChange={handleGarden}
                       className="circle bg-white appearance-none border border-black rounded-full w-4 h-4 checked:bg-red-500"
                     />
-                    <label htmlFor="free" className="mx-3 relative top-1">
+                    <label htmlFor="free" className="mx-3 relative  ">
                       Private Garden
                     </label>
                   </div>
@@ -461,7 +457,7 @@ const SellForm = () => {
                       onChange={handleSecurity}
                       className="circle bg-white appearance-none border border-black rounded-full w-4 h-4 checked:bg-red-500"
                     />
-                    <label htmlFor="free" className="mx-3 relative top-1">
+                    <label htmlFor="free" className="mx-3 relative  ">
                       Security
                     </label>
                   </div>
@@ -538,7 +534,7 @@ const SellForm = () => {
             </div>
 
             <div className="mb-6 flex gap-5 max-md:flex-col">
-              <div className="p-2 border w-fit flex justify-center items-center">
+              <div className="p-1.5 rounded-md px-4 border w-fit flex justify-center items-center">
                 <input
                   type="checkbox"
                   id="negotiable"
@@ -546,7 +542,7 @@ const SellForm = () => {
                   onChange={handleNegotiableChange}
                   className="circle bg-white appearance-none border border-black rounded-full w-4 h-4 checked:bg-red-500 checked:border-transparent"
                 />
-                <label htmlFor="negotiable" className="mx-3 relative top-1">
+                <label htmlFor="negotiable" className="ms-1 text-sm relative">
                   Negotiable
                 </label>
               </div>
@@ -559,7 +555,7 @@ const SellForm = () => {
                     onChange={handleExchangeChange}
                     className="circle appearance-none border border-black rounded-full w-4 h-4 checked:bg-red-500 checked:border-transparent"
                   />
-                  <label htmlFor="exchange" className="mx-3 relative top-1">
+                  <label htmlFor="exchange" className="mx-3 relative  ">
                     Exchange
                   </label>
                 </div>
@@ -573,7 +569,7 @@ const SellForm = () => {
                     onChange={handleFreeChange}
                     className="circle bg-white appearance-none border border-black rounded-full w-4 h-4 checked:bg-red-500"
                   />
-                  <label htmlFor="free" className="mx-3 relative top-1">
+                  <label htmlFor="free" className="mx-3 relative  ">
                     Free
                   </label>
                 </div>
@@ -608,7 +604,7 @@ const SellForm = () => {
                     />
                     <label
                       htmlFor={`file-input-${index}`}
-                      className="flex bottom-0 w-fit justify-center items-center bg-green-500 text-white px-4 py-2 text-center cursor-pointer rounded-md"
+                      className="flex bottom-0 w-fit justify-center items-center bg-gray-500 text-white px-4 py-2 text-center cursor-pointer rounded-md"
                     >
                       {images[index] ? "Change Image" : "Upload Image"}
                     </label>
@@ -680,7 +676,7 @@ const SellForm = () => {
             <div className="mb-4">
               <div className="mt-2 gap-5 flex max-md:flex-col">
                 <label className="text-lg">Contact Type:</label>
-                <div className="flex justify-center items-center w-fit border">
+                <div className="p-1.5 rounded-md px-4 flex justify-center items-center w-fit border">
                   <input
                     type="checkbox"
                     id="phone"
@@ -689,11 +685,11 @@ const SellForm = () => {
                     onChange={() => handleContactMethodChange("phone")}
                     className="circle appearance-none border border-black rounded-full w-4 h-4 checked:bg-red-500 checked:border-transparent"
                   />
-                  <label htmlFor="phone" className="mx-3 relative top-1">
-                    Phone
+                  <label htmlFor="phone" className="ms-1 text-sm relative">
+                    Phone Number
                   </label>
                 </div>
-                <div className="flex justify-center items-center w-fit border">
+                <div className="p-1.5 rounded-md px-4 flex justify-center items-center w-fit border">
                   <input
                     type="checkbox"
                     id="chat"
@@ -702,11 +698,11 @@ const SellForm = () => {
                     onChange={() => handleContactMethodChange("chat")}
                     className="circle appearance-none border border-black rounded-full w-4 h-4 checked:bg-red-500 checked:border-transparent"
                   />
-                  <label htmlFor="chat" className="mx-3 relative top-1">
-                    Chat
+                  <label htmlFor="chat" className="ms-1 text-sm relative">
+                    Dubbizle Chat
                   </label>
                 </div>
-                <div className="flex justify-center items-center w-fit border">
+                <div className="p-1.5 rounded-md px-4 flex justify-center items-center w-fit border">
                   <input
                     type="checkbox"
                     id="both"
@@ -715,7 +711,7 @@ const SellForm = () => {
                     onChange={() => handleContactMethodChange("both")}
                     className="circle appearance-none border border-black rounded-full w-4 h-4 checked:bg-red-500 checked:border-transparent"
                   />
-                  <label htmlFor="both" className="mx-3 relative top-1">
+                  <label htmlFor="both" className="ms-1 text-sm relative">
                     Both
                   </label>
                 </div>

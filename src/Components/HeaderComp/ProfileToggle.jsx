@@ -87,7 +87,11 @@ function ProfileToggle({ setGoogle, setFacebook, setData, profile }) {
                 <div className="w-6 flex justify-center">
                   <img src={myAds} width={23} height={24} />
                 </div>
-                <p className="ms-3">My Ads</p>
+                <p className="ms-3"
+                  onClick={() => {
+                    navigate("/MyAds");
+                  }}>
+                  My Ads</p>
               </div>
               <div className="flex items-center ps-4 h-11 hover:bg-slate-100 cursor-pointer">
                 <div className="w-6 flex justify-center">

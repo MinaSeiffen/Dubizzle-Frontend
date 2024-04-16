@@ -22,8 +22,13 @@
 
 .tt1 {}
 
-.hidecontent {}
+.hidecontent {
+   
+}
 
+.top-4{
+    top: 12px;
+}
 .dis-flex {}
 
 .show-input-responsive {

@@ -1,12 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import {
-  likedProductAction,
-} from "../../Store/Slices/Favorites";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { useEffect } from "react";
 import useAddToFavourite from "../../Hooks/useAddToFavourite"
 import useRemoveFromFavourite from "../../Hooks/useRemoveFromFavourite"
 
@@ -16,11 +12,6 @@ const SellerProfile = ({ userData, userAds }) => {
   const { RemoveProductFromFavourite } = useRemoveFromFavourite();
 
   const favourites = useSelector((state) => state.favourite.favourite);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(likedProductAction());
-  }, []);
 
   let favouritesIds = [];
   if (favourites !== undefined) {
@@ -126,13 +117,17 @@ const SellerProfile = ({ userData, userAds }) => {
                       EGP {product.price}
                     </p>
                     <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        addOrRemoveFavourite(product);
-                      }}
-                    >
-                      {check(product._id) ? <FaHeart /> : <FaRegHeart />}
-                    </button>
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          addOrRemoveFavourite(product._id);
+                        }}
+                      >
+                        {check(product._id) ? (
+                          <FaHeart className="text-red-500" />
+                        ) : (
+                          <FaRegHeart />
+                        )}
+                      </button>
                   </div>
                   <div className="my-1 grid items-center min-h-12 ">
                     <p className="min-w-full max-h-12 overflow-hidden">
