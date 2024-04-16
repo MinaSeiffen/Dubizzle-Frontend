@@ -5,6 +5,7 @@ const useGetMyAdds = () => {
 
     const getMyAdds = async ()=>{
         const token = localStorage.getItem('jwt')
+        console.log(token)
         try {
             if (token){
                 const addsResponse = await fetch(`https://dubizzle-backend.onrender.com/products/getmyadds`,{
@@ -21,7 +22,7 @@ const useGetMyAdds = () => {
                 }
             }
         } catch (error) {
-            console.log("No token found")
+            console.log(error.message)
         }
     }
 
