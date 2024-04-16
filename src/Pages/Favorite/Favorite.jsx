@@ -64,12 +64,44 @@ export default function Favorite() {
     setValue(newValue);
   };
 
-  const {RemoveProductFromFavourite} = useRemoveFromFavourite()
-  const RemoveFavourite =(productId)=>{
-      RemoveProductFromFavourite(productId)
-  }
+  const { RemoveProductFromFavourite } = useRemoveFromFavourite();
+  const RemoveFavourite = (productId) => {
+    RemoveProductFromFavourite(productId);
+  };
 
- 
+  const showPrice = (number) => {
+    const formattedNumber = new Intl.NumberFormat("en-EG", {
+      style: "currency",
+      currency: "EGP",
+      minimumFractionDigits: 0, // Specifies the minimum number of fraction digits
+      maximumFractionDigits: 2,
+    }).format(number);
+    return formattedNumber.replace(/\.00$/, "");
+  };
+
+  const formatDateDifference = (updatedAt) => {
+    const currentDate = new Date();
+    const updatedDate = new Date(updatedAt);
+    const timeDifference = currentDate - updatedDate;
+
+    const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    const hoursDifference = Math.floor(
+      (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutesDifference = Math.floor(
+      (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+    );
+
+    if (daysDifference > 0) {
+      return `${daysDifference} day${daysDifference > 1 ? "s" : ""} ago`;
+    } else if (hoursDifference > 0) {
+      return `${hoursDifference} hour${hoursDifference > 1 ? "s" : ""} ago`;
+    } else if (minutesDifference > 0) {
+      return `${minutesDifference} minute${minutesDifference > 1 ? "s" : ""} ago`;
+    } else {
+      return 'just now';
+    }
+};
 
   return (
     <div className="container">
@@ -96,19 +128,22 @@ export default function Favorite() {
               />
             </Tabs>
           </Box>
-          <CustomTabPanel  value={value} index={0}>
-            <div className="flex gap-3 flex-wrap justify-center">
+          <CustomTabPanel value={value} index={0}>
+            <div className="flex gap-4 flex-wrap ">
               {favorite?.length > 0 &&
                 favorite.map((prod, i) => {
                   return (
                     <Card1 className="w-full md:w-80 lg:w-72 p-0" key={i}>
-                      <CardMedia className="h-40 m-0" image={prod?.images[0]} />
+                      <CardMedia
+                        className="h-48 md:h-40 m-0"
+                        image={prod?.images[0]}
+                      />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                          
-                          
                           <div className="flex justify-between">
-                            <span className="font-sans text-lg text-red-600 font-semibold">EGP {prod.price}</span>
+                            <span className="font-sans text-lg text-red-600 font-semibold">
+                              {showPrice(prod.price)}
+                            </span>
                             <button
                               onClick={(e) => {
                                 e.stopPropagation();
@@ -118,15 +153,20 @@ export default function Favorite() {
                               <FaHeart className="text-red-500" />
                             </button>
                           </div>
-                          
                         </Typography>
                         <Typography className=" h-14 pb-2">
-                          <span className="text-sm font-semibold">{prod?.name}</span>
+                          <span className="text-sm font-semibold">
+                            {prod?.name}
+                          </span>
                         </Typography>
                         <Typography className="text-lg">
-                        <span className="text-sm">{prod?.location}</span>
-                          
+                          <span className="text-sm">{prod?.location}</span>
                         </Typography>
+                        <div className="flex py-1">
+                        <p className="text-sm text-gray-700">
+                          {formatDateDifference(prod.updatedAt)}
+                        </p>
+                      </div>
                       </CardContent>
                       <CardActions></CardActions>
                     </Card1>

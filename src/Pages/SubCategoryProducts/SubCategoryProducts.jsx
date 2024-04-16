@@ -79,19 +79,20 @@ const SubCategoryProducts = () => {
     }
   }, [name, location, useLocation, startPrice, endPrice , queryParams ]);
 
-
+  
   return (
     <>
       <div className="px-7">
-        <div className="hidden">
-        <div className="flex justify-between w-full   mb-3">
-          <p className="text-2xl font-bold">Furniture & Decor</p>
+        <div className="mt-32 xl:mt-44 ">
+        <div className="flex justify-between  w-full   mb-3">
+          <p className="text-2xl font-bold">In Egypt</p>
           <div className={`${styles.btnSaveSearch}`}>
-            <FaRegHeart className="mr-2 w-48 text-xl text-red-600" /> Save Search
+            <FaRegHeart className="mr-2 w-6 text-xl text-red-600" /> 
+           <span> Save Search</span>
           </div>
         </div>
         </div>
-        <div className="flex flex-wrap mt-32 xl:mt-44 ">
+        <div className="flex flex-wrap mt-4 xl:mt-5 ">
           <div className="w-full xl:w-1/4 pr-2 ps-2">
             <p className=" border-b pb-5 pl-4 border-slate-200 font-bold">
               Filters

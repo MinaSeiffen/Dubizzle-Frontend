@@ -7,6 +7,7 @@ import { SellerData } from "../../Components/SellerData/SellerData";
 import UseGetProduct from "../../Hooks/UseGetProduct";
 import { useEffect } from "react";
 import CategorySub from "../../Components/CategorySubComp/CategorySub";
+import ProductDetailsFooter from "../../Components/ProductDetailsFooter/ProductDetailsFooter";
 
 export const ProductDetails = () => {
   const { product, setId, userData, subcategoryName } = UseGetProduct();
@@ -18,13 +19,16 @@ export const ProductDetails = () => {
 
   return (
     <>
+       <div className="fixed z-50 md:hidden w-full block bottom-0">
+       <ProductDetailsFooter product={product}/>
+       </div>
       <div className="container pt-4">
         <CategorySub />
       </div>
-      <div className="container max-xl:container max-xl:justify-center max-xl:items-center flex flex-col xl:flex-row ">
-        <div className="flex-col mr-3 xl:w-full">
+      <div className="container md:mb-4 mb-12 max-xl:container max-xl:justify-center max-xl:items-center flex flex-col xl:flex-row ">
+        <div className=" flex-col pr-3 xl:w-vw-57/100 max-w-full">
           <ProductDisplay product={product} />
-          <div className="flex-1">
+          <div className="max-w-full">
             <Details product={product} />
             <RelatedProducts
               subcategoryName={subcategoryName}
@@ -32,15 +36,15 @@ export const ProductDetails = () => {
             />
           </div>
         </div>
-        <div className="md:flex flex-col">
-          <div className="md:w-[517px] max-xl:hidden">
+        <div className="flex flex-col w-full">
+          <div className=" max-w-full ">
             <SellerData userData={userData} product={product} />
           </div>
-          <div className="max-xl:hidden">
+          <div className="max-xl:hidden max-w-full">
             <Safety />
           </div>
         </div>
       </div>
-    </>
+      </>
   );
 };

@@ -6,7 +6,9 @@ import DubbizleSlider from '../../Components/DubbizleSlider/DubbizleSlider'
 import PopularCategories from '../../Components/popularCategories/PopularCategories'
 import CategoriesCard from '../../Components/CategoriesCard/CategoriesCard'
 import { useEffect, useState } from 'react'
-import slideImage from '../../assets/images/dubbizleSlider.jpg'
+import DropDwonCategoryResponsive from '../../Components/DropDownCategoryResponsive/DropDwonCategoryResponsive'
+import FooterResponsive from '../../Components/FooterResponsive/FooterResponsive'
+
 
 
 export default function Home() {
@@ -29,7 +31,7 @@ export default function Home() {
 
     // http://localhost:3000/categories
     async function getCategory() {
-        await fetch("https://dubizzle-backend.onrender.com/categories")
+        await fetch("http://localhost:3000/categories")
             .then((res) => {
                 return res.json()
             })
@@ -45,10 +47,10 @@ export default function Home() {
 
     return <>
 
-        <div style={{ position: 'relative', marginBottom: '200px' }} className='md:mt-36 md:container '  >
+        <div  style={{ position: 'relative'}} className='md:mt-36 md:container '  >
 
             <CategorySub></CategorySub>
-            <DubbizleSlider name="home" img={slideImage} />
+            <DubbizleSlider />
             <PopularCategories></PopularCategories>
 
 
@@ -58,7 +60,8 @@ export default function Home() {
             <CategoriesCard subcatName={"Apartments for Sale"} hidden={""}></CategoriesCard>
             <CategoriesCard subcatName={"Villas For Sale"} hidden={""} ></CategoriesCard>
             <CategoriesCard subcatName={"Villas For Rent"} hidden={""}></CategoriesCard>
-
+            <DropDwonCategoryResponsive></DropDwonCategoryResponsive>
+            <FooterResponsive></FooterResponsive>
         </div>
 
     </>
