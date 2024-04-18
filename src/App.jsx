@@ -53,15 +53,15 @@ function App() {
 
   return (
     <>
+            <Provider store={StroeConfig}>
       <RouterProvider router={routesPage}>
         <MenuSelectionProvider>
           <SocketContextProvider>
-            <Provider store={StroeConfig}>
               <AppLayout />
-            </Provider>
           </SocketContextProvider>
         </MenuSelectionProvider>
       </RouterProvider>
+            </Provider>
     </>
   );
 }
