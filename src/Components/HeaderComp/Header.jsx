@@ -107,18 +107,22 @@ useEffect(() => {
                 <div className="md:grid md:h-12 md:font-bold text-xl md:text-center items-center sm:visible hidden">
                   <button>English</button>
                 </div>
-                <div className="text-center hidecontent">
-<Link to={"/chat"}>
-                  <button className=" text-center ">
-                    <IoChatbubbleOutline className="h-12 font-bold text-xl" />
-                  </button>
-</Link>
-                </div>
-                <div className=" md:text-center ">
-                  <button className="text-center">
-                    <FaRegBell className="h-12 text-xl" />
-                  </button>
-                </div>
+                {profile && (
+                  <>
+                    <div className="text-center hidecontent">
+                      <Link to={"/chat"}>
+                        <button className=" text-center ">
+                          <IoChatbubbleOutline className="h-12 font-bold text-xl" />
+                        </button>
+                      </Link>
+                    </div>
+                    <div className=" md:text-center ">
+                      <button className="text-center">
+                        <FaRegBell className="h-12 text-xl" />
+                      </button>
+                    </div>
+                  </>
+                )}
                 <div className="md:relative hidecontent">
                   <div className="flex item-center h-3 font-bold">
                     {!facebook && !google && !data && !profile ? (
