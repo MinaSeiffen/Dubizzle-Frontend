@@ -17,8 +17,8 @@ import useCheckingForToken from "./Hooks/useCheckingForToken";
 import { useEffect } from "react";
 import Chat from "./Pages/Chat/Chat";
 import { SocketContextProvider } from "./Context/SocketContext";
-import MyAds from "../src/Pages/MyAds/MyAds"
-import DropDownTogleDiv from "../src/Components/DropDwonTogleDiv/DropDownTogleDiv"
+import MyAds from "../src/Pages/MyAds/MyAds";
+import DropDownTogleDiv from "../src/Components/DropDwonTogleDiv/DropDownTogleDiv";
 
 function App() {
   const { getMyProfileFromToken, profile } = useCheckingForToken();
@@ -46,22 +46,22 @@ function App() {
         { path: "/MyAds", element: <MyAds /> },
       ],
     },
-    { path: "/togle", element:<DropDownTogleDiv togleV={true} /> },
+    { path: "/togle", element: <DropDownTogleDiv togleV={true} /> },
   ]);
 
   useEffect(() => {}, [profile]);
 
   return (
     <>
-      <MenuSelectionProvider>
-            <SocketContextProvider>
-        <Provider store={StroeConfig}>
-          <RouterProvider router={routesPage}>
+      <RouterProvider router={routesPage}>
+        <MenuSelectionProvider>
+          <SocketContextProvider>
+            <Provider store={StroeConfig}>
               <AppLayout />
-          </RouterProvider>
-        </Provider>
-            </SocketContextProvider>
-      </MenuSelectionProvider>
+            </Provider>
+          </SocketContextProvider>
+        </MenuSelectionProvider>
+      </RouterProvider>
     </>
   );
 }
