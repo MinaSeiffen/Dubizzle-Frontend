@@ -17,8 +17,8 @@ import useCheckingForToken from "./Hooks/useCheckingForToken";
 import { useEffect } from "react";
 import Chat from "./Pages/Chat/Chat";
 import { SocketContextProvider } from "./Context/SocketContext";
-import MyAds from "../src/Pages/MyAds/MyAds";
-import DropDownTogleDiv from "../src/Components/DropDwonTogleDiv/DropDownTogleDiv";
+import MyAds from "../src/Pages/MyAds/MyAds"
+import DropDownTogleDiv from "../src/Components/DropDwonTogleDiv/DropDownTogleDiv"
 
 function App() {
   const { getMyProfileFromToken, profile } = useCheckingForToken();
@@ -32,7 +32,7 @@ function App() {
       path: "/",
       element: <AppLayout />,
       children: [
-        { path: "/", element: <Home /> },
+        { index: true, element: <Home /> },
         { path: "/search/:name?", element: <SubCategoryProducts /> },
         { path: "/searchforproperties", element: <SubCategoryProducts /> },
         { path: "/sell", element: <SellPage /> },
@@ -46,22 +46,22 @@ function App() {
         { path: "/MyAds", element: <MyAds /> },
       ],
     },
-    { path: "/togle", element: <DropDownTogleDiv togleV={true} /> },
+    { path: "/togle", element:<DropDownTogleDiv togleV={true} /> },
   ]);
 
   useEffect(() => {}, [profile]);
 
   return (
     <>
-            <Provider store={StroeConfig}>
-      <RouterProvider router={routesPage}>
-        <MenuSelectionProvider>
-          <SocketContextProvider>
+      <MenuSelectionProvider>
+            <SocketContextProvider>
+        <Provider store={StroeConfig}>
+          <RouterProvider router={routesPage}>
               <AppLayout />
-          </SocketContextProvider>
-        </MenuSelectionProvider>
-      </RouterProvider>
-            </Provider>
+          </RouterProvider>
+        </Provider>
+            </SocketContextProvider>
+      </MenuSelectionProvider>
     </>
   );
 }
