@@ -32,7 +32,7 @@ function App() {
       path: "/",
       element: <AppLayout />,
       children: [
-        { index: true, element: <Home /> },
+        { path: "/", element: <Home /> },
         { path: "/search/:name?", element: <SubCategoryProducts /> },
         { path: "/searchforproperties", element: <SubCategoryProducts /> },
         { path: "/sell", element: <SellPage /> },
