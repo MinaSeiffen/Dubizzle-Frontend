@@ -65,7 +65,7 @@ const SellForm = () => {
     }
   
     try {
-      const response = await fetch("http://localhost:3000/upload", {
+      const response = await fetch("https://dubizzle-backend.onrender.com/upload", {
         method: "POST",
         body: formData,
       });
