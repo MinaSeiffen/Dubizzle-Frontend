@@ -1,68 +1,38 @@
-import "./App.css";
-import Home from "./Pages/Home/Home";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AppLayout from "./AppLayout";
-import Property from "./Pages/Property/Property";
-import { Provider } from "react-redux";
-import StroeConfig from "./Store/Store";
-import Favorite from "./Pages/Favorite/Favorite";
-import { SellPage } from "./Pages/Sell/SellPage";
-import { SellFormPage } from "./Pages/SellForm/SellFormPage";
-import { MenuSelectionProvider } from "./Context/MenuSelectionContext";
-import { ProductDetails } from "./Pages/ProductDetails/ProductDetails";
+import Home from "./Pages/Home/Home";
 import SubCategoryProducts from "./Pages/SubCategoryProducts/SubCategoryProducts";
-import SellerDetails from "./Pages/SellerDetails/SellerDetails";
-import EditProfile from "./Pages/EditProfile/EditProfile";
-import useCheckingForToken from "./Hooks/useCheckingForToken";
-import { useEffect } from "react";
+import SellPage from "./Pages/Sell/SellPage";
 import Chat from "./Pages/Chat/Chat";
-import { SocketContextProvider } from "./Context/SocketContext";
-import MyAds from "../src/Pages/MyAds/MyAds"
-import DropDownTogleDiv from "../src/Components/DropDwonTogleDiv/DropDownTogleDiv"
+import SellFormPage from "./Pages/SellForm/SellFormPage";
+import ProductDetails from "./Pages/ProductDetails/ProductDetails";
+import SellerDetails from "./Pages/SellerDetails/SellerDetails";
+import Favorite from "./Pages/Favorite/Favorite";
+import EditProfile from "./Pages/EditProfile/EditProfile";
+import Property from "./Pages/Property/Property";
+import MyAds from "../src/Pages/MyAds/MyAds";
+import DropDownTogleDiv from "../src/Components/DropDwonTogleDiv/DropDownTogleDiv";
 
 function App() {
-  const { getMyProfileFromToken, profile } = useCheckingForToken();
-
-  useEffect(() => {
-    getMyProfileFromToken();
-  }, []);
-
-  const routesPage = createBrowserRouter([
-    {
-      path: "/",
-      element: <AppLayout />,
-      children: [
-        { index: true, element: <Home /> },
-        { path: "/search/:name?", element: <SubCategoryProducts /> },
-        { path: "/searchforproperties", element: <SubCategoryProducts /> },
-        { path: "/sell", element: <SellPage /> },
-        { path: "/chat", element: <Chat profile={profile} /> },
-        { path: "/sellform", element: <SellFormPage /> },
-        { path: "/product-details/:id", element: <ProductDetails /> },
-        { path: "/sellerADs/:id", element: <SellerDetails /> },
-        { path: "favorite", element: <Favorite /> },
-        { path: "/EditProfile", element: <EditProfile /> },
-        { path: "/property", element: <Property /> },
-        { path: "/MyAds", element: <MyAds /> },
-      ],
-    },
-    { path: "/togle", element:<DropDownTogleDiv togleV={true} /> },
-  ]);
-
-  useEffect(() => {}, [profile]);
-
   return (
-    <>
-      <MenuSelectionProvider>
-            <SocketContextProvider>
-        <Provider store={StroeConfig}>
-          <RouterProvider router={routesPage}>
-              <AppLayout />
-          </RouterProvider>
-        </Provider>
-            </SocketContextProvider>
-      </MenuSelectionProvider>
-    </>
+    <Router>
+      <Switch>
+        <Route path="/" exact component={AppLayout} />
+        <Route path="/search/:name?" component={SubCategoryProducts} />
+        <Route path="/searchforproperties" component={SubCategoryProducts} />
+        <Route path="/sell" component={SellPage} />
+        <Route path="/chat" component={Chat} />
+        <Route path="/sellform" component={SellFormPage} />
+        <Route path="/product-details/:id" component={ProductDetails} />
+        <Route path="/sellerADs/:id" component={SellerDetails} />
+        <Route path="/favorite" component={Favorite} />
+        <Route path="/EditProfile" component={EditProfile} />
+        <Route path="/property" component={Property} />
+        <Route path="/MyAds" component={MyAds} />
+        <Route path="/togle" component={DropDownTogleDiv} />
+      </Switch>
+    </Router>
   );
 }
 
