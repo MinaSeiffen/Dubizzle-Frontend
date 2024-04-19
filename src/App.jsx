@@ -40,7 +40,7 @@ function App() {
         { path: "/sellform", element: <SellFormPage /> },
         { path: "/product-details/:id", element: <ProductDetails /> },
         { path: "/sellerADs/:id", element: <SellerDetails /> },
-        { path: "/favorite", element: <Favorite /> },
+        { path: "favorite", element: <Favorite /> },
         { path: "/EditProfile", element: <EditProfile /> },
         { path: "/property", element: <Property /> },
         { path: "/MyAds", element: <MyAds /> },
