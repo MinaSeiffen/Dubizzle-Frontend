@@ -98,7 +98,7 @@ const showPrice = (number) => {
             className="font-semi bold  mb-2 mt-6 text-red-500 font-bold"
             href=""
           >
-            Veiw more
+            View more
           </a>
         </div>
 
