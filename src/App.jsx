@@ -11,7 +11,7 @@ import SubCategoryProducts from "./Pages/SubCategoryProducts/SubCategoryProducts
 import SellerDetails from "./Pages/SellerDetails/SellerDetails";
 import EditProfile from "./Pages/EditProfile/EditProfile";
 import useCheckingForToken from "./Hooks/useCheckingForToken";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Chat from "./Pages/Chat/Chat";
 import MyAds from "../src/Pages/MyAds/MyAds";
 import DropDownTogleDiv from "../src/Components/DropDwonTogleDiv/DropDownTogleDiv";
@@ -19,6 +19,8 @@ import { Switch } from "antd";
 import Header from "./Components/HeaderComp/Header";
 import { Toaster } from "react-hot-toast";
 import { Footer } from "antd/es/layout/layout";
+import { useDispatch } from "react-redux";
+import { likedProductAction } from "./Store/Slices/Favorites";
 
 function App() {
   const { getMyProfileFromToken, profile } = useCheckingForToken();
@@ -26,6 +28,21 @@ function App() {
   useEffect(() => {
     getMyProfileFromToken();
   }, []);
+
+  const [token , setToken] = useState(null)
+  const getToken = () => {
+    const token = localStorage.getItem("jwt");
+    setToken(token);
+};
+const dispatch = useDispatch();
+  useEffect(() => {
+    getMyProfileFromToken(token);
+    getToken();
+  }, [profile , getMyProfileFromToken , token , getToken]);
+
+  useEffect(() => {
+    dispatch(likedProductAction());
+  },[likedProductAction()])
 
   const routesPage = createBrowserRouter([
     {
