@@ -1,4 +1,3 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./Components/HeaderComp/Header";
 import Footer from "./Components/FooterComp/Footer";
@@ -9,25 +8,26 @@ import { useDispatch } from "react-redux";
 import { likedProductAction } from "./Store/Slices/Favorites";
 
 export default function AppLayout() {
-  const { profile } = useCheckingForToken();
-  const [token, setToken] = useState(null);
+  const { getMyProfileFromToken, profile } = useCheckingForToken();
+  const [token , setToken] = useState(null)
   const getToken = () => {
     const token = localStorage.getItem("jwt");
     setToken(token);
-  };
-  const dispatch = useDispatch();
+};
+const dispatch = useDispatch();
   useEffect(() => {
+    getMyProfileFromToken(token);
     getToken();
-  }, []);
+  }, [profile , getMyProfileFromToken , token , getToken]);
 
   useEffect(() => {
     dispatch(likedProductAction());
-  }, [dispatch]);
-
+  },[likedProductAction()])
+  
   return (
     <>
       <Header profile={profile}></Header>
-      <div className="md:mt-32 mt-30">
+      <div className="md:mt-32 mt-30 ">
         <Outlet />
         <Toaster />
       </div>
