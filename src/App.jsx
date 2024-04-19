@@ -8,7 +8,7 @@ import StroeConfig from "./Store/Store";
 import Favorite from "./Pages/Favorite/Favorite";
 import { SellPage } from "./Pages/Sell/SellPage";
 import { SellFormPage } from "./Pages/SellForm/SellFormPage";
-// import { MenuSelectionProvider } from "./Context/MenuSelectionContext";
+import { MenuSelectionProvider } from "./Context/MenuSelectionContext";
 import { ProductDetails } from "./Pages/ProductDetails/ProductDetails";
 import SubCategoryProducts from "./Pages/SubCategoryProducts/SubCategoryProducts";
 import SellerDetails from "./Pages/SellerDetails/SellerDetails";
@@ -16,7 +16,7 @@ import EditProfile from "./Pages/EditProfile/EditProfile";
 import useCheckingForToken from "./Hooks/useCheckingForToken";
 import { useEffect } from "react";
 import Chat from "./Pages/Chat/Chat";
-// import { SocketContextProvider } from "./Context/SocketContext";
+import { SocketContextProvider } from "./Context/SocketContext";
 import MyAds from "../src/Pages/MyAds/MyAds"
 import DropDownTogleDiv from "../src/Components/DropDwonTogleDiv/DropDownTogleDiv"
 
@@ -53,15 +53,15 @@ function App() {
 
   return (
     <>
-      {/* <MenuSelectionProvider>
-            <SocketContextProvider> */}
+      <MenuSelectionProvider>
+            <SocketContextProvider>
         <Provider store={StroeConfig}>
           <RouterProvider router={routesPage}>
               <AppLayout />
           </RouterProvider>
         </Provider>
-            {/* </SocketContextProvider>
-      </MenuSelectionProvider> */}
+            </SocketContextProvider>
+      </MenuSelectionProvider>
     </>
   );
 }
