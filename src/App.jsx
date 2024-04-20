@@ -19,6 +19,7 @@ import Chat from "./Pages/Chat/Chat";
 import { SocketContextProvider } from "./Context/SocketContext";
 import MyAds from "../src/Pages/MyAds/MyAds"
 import DropDownTogleDiv from "../src/Components/DropDwonTogleDiv/DropDownTogleDiv"
+import NotFound from "./Pages/NotFound/NotFound";
 
 function App() {
   const { getMyProfileFromToken, profile } = useCheckingForToken();
@@ -44,6 +45,7 @@ function App() {
         { path: "/EditProfile", element: <EditProfile /> },
         { path: "/property", element: <Property /> },
         { path: "/MyAds", element: <MyAds /> },
+        { path: "*", element: <NotFound /> },
       ],
     },
     { path: "/togle", element:<DropDownTogleDiv togleV={true} profile={profile}/> },
