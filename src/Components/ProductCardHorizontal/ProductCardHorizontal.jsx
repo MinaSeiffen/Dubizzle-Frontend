@@ -1,34 +1,62 @@
-import { FaRegHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
 import { BsChatDots } from "react-icons/bs";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import useAddToFavourite from "../../Hooks/useAddToFavourite";
+import useRemoveFromFavourite from "../../Hooks/useRemoveFromFavourite";
+import { useSelector } from "react-redux";
 
 const ProductCardHorizontal = ({ product }) => {
-    useEffect(() => {}, [product]);
+  useEffect(() => {}, [product]);
+  const { addProductToFavourite } = useAddToFavourite();
+  const { RemoveProductFromFavourite } = useRemoveFromFavourite();
 
-    const formatDateDifference = (updatedAt) => {
-      const currentDate = new Date();
-      const updatedDate = new Date(updatedAt);
-      const timeDifference = currentDate - updatedDate;
+  const favourites = useSelector((state) => state.favourite.favourite);
 
-      const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-      const hoursDifference = Math.floor(
-        (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const minutesDifference = Math.floor(
-        (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
-      );
+  let favouritesIds = [];
+  if (favourites !== undefined) {
+    favouritesIds = favourites.map((product) => {
+      return product._id;
+    });
+  }
 
-      if (daysDifference > 0) {
-        return `${daysDifference} day${daysDifference > 1 ? "s" : ""} ago`;
-      } else if (hoursDifference > 0) {
-        return `${hoursDifference} hour${hoursDifference > 1 ? "s" : ""} ago`;
-      } else if (minutesDifference > 0) {
-        return `${minutesDifference} minute${minutesDifference > 1 ? "s" : ""} ago`;
-      } else {
-        return 'just now';
-      }
+  function check(id) {
+    return favouritesIds.find((prdId) => prdId == id);
+  }
+
+  const addOrRemoveFavourite = (producId) => {
+    if (!check(producId)) {
+      addProductToFavourite(producId);
+    } else {
+      RemoveProductFromFavourite(producId);
+    }
+  };
+
+  const formatDateDifference = (updatedAt) => {
+    const currentDate = new Date();
+    const updatedDate = new Date(updatedAt);
+    const timeDifference = currentDate - updatedDate;
+
+    const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    const hoursDifference = Math.floor(
+      (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutesDifference = Math.floor(
+      (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+    );
+
+    if (daysDifference > 0) {
+      return `${daysDifference} day${daysDifference > 1 ? "s" : ""} ago`;
+    } else if (hoursDifference > 0) {
+      return `${hoursDifference} hour${hoursDifference > 1 ? "s" : ""} ago`;
+    } else if (minutesDifference > 0) {
+      return `${minutesDifference} minute${
+        minutesDifference > 1 ? "s" : ""
+      } ago`;
+    } else {
+      return "just now";
+    }
   };
 
   return (
@@ -36,13 +64,13 @@ const ProductCardHorizontal = ({ product }) => {
       <div className="flex items-center justify-center mb-3">
         <div className="relative flex w-[1000px]  flex-row h-[300px] rounded-xl bg-white text-gray-700 ">
           <Link to={`/product-details/${product._id}`}>
-          <div className="relative m-0 w-vw-23/100 shrink-0 overflow-hidden rounded-lg rounded-r-none bg-white bg-clip-border text-gray-700">
-            <img
-              src={product?.images[0]}
-              alt="image"
-              className="h-[300px] w-full object-cover"
+            <div className="relative m-0 w-vw-23/100 shrink-0 overflow-hidden rounded-lg rounded-r-none bg-white bg-clip-border text-gray-700">
+              <img
+                src={product?.images[0]}
+                alt="image"
+                className="h-[300px] w-full object-cover"
               />
-          </div>
+            </div>
           </Link>
           <div className="p-4 w-full border border-slate-20 border-l-0 rounded-r-lg">
             <div className="flex justify-between  w-full">
@@ -50,7 +78,18 @@ const ProductCardHorizontal = ({ product }) => {
                 EGP {product?.price}
               </h3>
               <span>
-                <FaRegHeart className="text-red-600 text-xl" />
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    addOrRemoveFavourite(product._id);
+                  }}
+                >
+                  {check(product._id) ? (
+                    <FaHeart className="text-red-500" />
+                  ) : (
+                    <FaRegHeart />
+                  )}
+                </button>
               </span>
             </div>
             <h5 className="pt-2 h-vh-10/100 block font-sans text-lg font-semibold text-black">
