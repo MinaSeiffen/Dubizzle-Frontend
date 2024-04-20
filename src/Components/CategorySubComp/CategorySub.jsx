@@ -58,7 +58,7 @@ export default function CategorySub() {
                 <div className='grid grid-flow-col my-3 gap-4 px-2'>
                     {cat2.map((category2, key) => {
                         return <div
-                            className='flex flex-col sm:min-w-20 min-w-10 sm:max-w-35 max-w-20 sm:mx-2 mx-2' onClick={()=>{console.log("hello")}}>
+                            className='flex flex-col sm:min-w-20 min-w-10 sm:max-w-35 sm:mx-2 mx-2' onClick={()=>{console.log("hello")}}>
                             <div className='flex justify-center rounded bg-red-100'>
                                 <img src={category2.img} className='sm:p-2 p-2 category-icons' />
                             </div>

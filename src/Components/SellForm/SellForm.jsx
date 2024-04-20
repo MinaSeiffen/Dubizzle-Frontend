@@ -65,7 +65,7 @@ const SellForm = () => {
     }
   
     try {
-      const response = await fetch("https://dubizzle-backend.onrender.com/upload", {
+      const response = await fetch("http://localhost:3000/upload", {
         method: "POST",
         body: formData,
       });
@@ -281,7 +281,7 @@ const SellForm = () => {
         Post AD
       </h1>
       <div className="container mx-auto border p-1">
-        <div className="flex items-center">
+        <div className="flex items-center max-lg:flex-col max-lg:w-[300px]">
           <BreadCrumb />
           <Link to={"/sell"}>
             <span className="text-black ml-auto underline relative right-16">
@@ -364,7 +364,7 @@ const SellForm = () => {
             {isproperty && (
               <div className="mb-4">
                 <label className="text-md mb-1">Property Type:</label>
-                <div className="mb-4 flex gap-5 m-3">
+                <div className="mb-4 flex gap-5 m-3 max-lg:flex-col max-lg:w-fit">
                   <div className="p-2 border w-fit flex justify-center items-center">
                     <input
                       type="checkbox"
@@ -413,7 +413,7 @@ const SellForm = () => {
             {isproperty && (
               <div>
                 <label className="block mb-1">Amenities:</label>
-                <div className="mb-4 flex gap-5 m-3">
+                <div className="mb-4 flex gap-5 m-3 max-lg:flex-col max-lg:w-fit">
                   <div className="p-2 border w-fit flex justify-center items-center">
                     <input
                       type="checkbox"
@@ -652,12 +652,12 @@ const SellForm = () => {
                 </button>
                 {isDropdownLocation && (
                   <div className="dropdown-menu absolute top-full mt-1 border rounded-lg shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-                    <div className="relative grid w-64 sm:gap-8 sm:p-8">
+                    <div className="relative grid max-xl:w-56 xl:w-64 sm:gap-8 sm:p-8">
                       {dropdownItems.map((item, index) => (
                         <a
                           key={index}
                           href="#"
-                          className="-m-3 flex items-start rounded-lg hover:bg-gray-50"
+                          className="-m-3 flex flex-col max-xl:h-[80px] max-xl:p-2 items-start rounded-lg hover:bg-gray-50"
                           onClick={(e) => handleDropdownItemClick(item, e)}
                         >
                           <div className="ml-4">

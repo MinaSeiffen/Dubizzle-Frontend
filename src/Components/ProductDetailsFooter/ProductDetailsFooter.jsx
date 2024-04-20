@@ -11,7 +11,7 @@ function ProductDetailsFooter({product}) {
             product?.contact_type.includes("chat")) && (
               <div className="flex mx-2 h-[40px] justify-center cursor-pointer items-center bg-red-300 rounded-lg hover:bg-red-400">
               <a
-                href={`tel:${product?.phoneNumber}`}
+                href="/chat"
                 className="relative -mr-px inline-flex w-[100px] flex-1 items-center justify-center gap-x-1 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
               >
                 <svg

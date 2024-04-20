@@ -20,7 +20,7 @@ import useLogin from "../../Hooks/useLogin";
 import useRegister from "../../Hooks/useRegister";
 import useLoginWithEmail from "../../Hooks/useLoginWithEmail";
 import ProfileToggle from "./ProfileToggle";
-import Properties from '../../assets/images/property.svg'
+import Properties from "../../assets/images/property.svg";
 import TopHeader from "../TopHeader/TopHeader";
 
 export default function Header({ profile }) {
@@ -31,11 +31,11 @@ export default function Header({ profile }) {
   const { data, setData, registerUser } = useRegister();
   const { loginUser } = useLoginWithEmail();
   const [searchQuery, setSearchQuery] = useState("");
-  const [sellButton, setSellButton] = useState('hidden');
+  const [sellButton, setSellButton] = useState("hidden");
   const navigate = useNavigate();
 
   const handleSearch = () => {
-    navigate(`/search/${searchQuery}`)
+    navigate(`/search/${searchQuery}`);
   };
 
   const handleChange = (event) => {
@@ -48,28 +48,25 @@ export default function Header({ profile }) {
 
   useEffect(() => {}, [profile]);
 
- const location = useLocation()
-//  console.log(location.pathname)
+  const location = useLocation();
+  //  console.log(location.pathname)
 
-useEffect(() => {
-  if (location.pathname === "/") {
-    setSellButton('block');
-  }else {
-    setSellButton('hidden'); // Ensure it's visible when not on "/EditProfile"
-  }
-}, [location.pathname]);
-
- 
-
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setSellButton("block");
+    } else {
+      setSellButton("hidden"); // Ensure it's visible when not on "/EditProfile"
+    }
+  }, [location.pathname]);
 
   return (
     <>
       <div className="relative w-full">
         <div className="bg-white border-b  z-10 md:fixed   sm:top-0 pt-3 w-full ">
-        <div className='md:border-0 border-b-2 md:p-0 pb-3'>
-                <TopHeader/>
-            </div>
-          
+          <div className="md:border-0 border-b-2 md:p-0 pb-3">
+            <TopHeader />
+          </div>
+
           <div className="my-2 mx-2 md:container">
             <div className="md:grid md:grid-flow-col md:gap-1 dis-flex">
               <div className="md:flex md:justify-center z-99">
@@ -89,7 +86,7 @@ useEffect(() => {
 
               <div className="flex col-span-2 hidecontent">
                 <input
-                className="h-12 px-4 w-full border rounded-xl rounded-e-none "
+                  className="h-12 px-4 w-full border rounded-xl rounded-e-none "
                   type="text"
                   value={searchQuery}
                   onChange={handleChange}
@@ -116,7 +113,7 @@ useEffect(() => {
                         </button>
                       </Link>
                     </div>
-                    <div className=" md:text-center ">
+                    <div className=" md:text-center max-md:hidden ">
                       <button className="text-center">
                         <FaRegBell className="h-12 text-xl" />
                       </button>
@@ -137,12 +134,17 @@ useEffect(() => {
                         loginUser={loginUser}
                       />
                     ) : (
-                      <ProfileToggle setData={setData} setFacebook={setFacebook} setGoogle={setGoogle} profile={profile} />
+                      <ProfileToggle
+                        setData={setData}
+                        setFacebook={setFacebook}
+                        setGoogle={setGoogle}
+                        profile={profile}
+                      />
                     )}
                   </div>
                 </div>
 
-                 <button
+                <button
                   onClick={() => {
                     navigate("/sell");
                   }}

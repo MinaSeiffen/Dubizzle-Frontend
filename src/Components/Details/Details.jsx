@@ -49,7 +49,7 @@ export const Details = ({ product }) => {
     setProductDate(product);
   }, [product, productData]);
   return (
-    <div className="w-[740px] relative">
+    <div className="xl:w-[740px] max-md:w-[400px] relative">
       <div className="relative flex flex-col mb-5 h-[230px] rounded-xlspace-y-6 col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
         <div className="relative p-6">
           <div className="flex flex-row">
@@ -93,7 +93,7 @@ export const Details = ({ product }) => {
           <h1 className="mb-2 block font-sans text-3xl font-bold leading-snug tracking-normal text-black antialiased">
             Details
           </h1>
-          <div className="grid grid-cols-4">
+          <div className="grid grid-cols-4 max-md:grid-cols-2">
             <div>
               <p className="my-5">Price</p>
               <p className="my-5">Price Type</p>
@@ -171,7 +171,7 @@ export const Details = ({ product }) => {
           <p style={{ whiteSpace: "pre-wrap" }}>{productData?.description}</p>
         </div>
       </div>
-      <div className="xl:hidden mb-5 flex-col w-[740px]">
+      <div className="xl:hidden mb-5 flex-col max-md:w-[360px] xl:w-[740px]">
         <SellerData userData={userData} product={product} />
       </div>
       <div className="relative flex flex-col mb-5 rounded-xlspace-y-6 col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
@@ -192,8 +192,8 @@ export const Details = ({ product }) => {
           </iframe>
         </div>
       </div>
-      <div className="relative mt-3 rounded-xlspace-y-6 col-span-1 ">
-        <p>AD ID {productData?.id}</p>
+      <div className="relative mt-3 rounded-xlspace-y-6 col-span-1 max-md:hidden ">
+        <p>AD ID {productData?._id}</p>
         <p className="font-bold absolute right-0 top-0 hover:underline cursor-pointer ">
           Report this ad
         </p>

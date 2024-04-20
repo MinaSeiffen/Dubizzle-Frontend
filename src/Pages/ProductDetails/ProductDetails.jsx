@@ -26,7 +26,7 @@ export const ProductDetails = () => {
         <CategorySub />
       </div>
       <div className="container md:mb-4 mb-12 max-xl:container max-xl:justify-center max-xl:items-center flex flex-col xl:flex-row ">
-        <div className=" flex-col pr-3 xl:w-vw-57/100 max-w-full">
+        <div className=" flex-col pr-3 xl:w-vw-50/100 max-w-full">
           <ProductDisplay product={product} />
           <div className="max-w-full">
             <Details product={product} />
@@ -37,7 +37,7 @@ export const ProductDetails = () => {
           </div>
         </div>
         <div className="flex flex-col w-full">
-          <div className=" max-w-full ">
+          <div className="max-xl:hidden max-w-full ">
             <SellerData userData={userData} product={product} />
           </div>
           <div className="max-xl:hidden max-w-full">

@@ -46,7 +46,7 @@ function App() {
         { path: "/MyAds", element: <MyAds /> },
       ],
     },
-    { path: "/togle", element:<DropDownTogleDiv togleV={true} /> },
+    { path: "/togle", element:<DropDownTogleDiv togleV={true} profile={profile} /> },
   ]);
 
   useEffect(() => {}, [profile]);

@@ -12,14 +12,14 @@ export const ProductDisplay = ({ product }) => {
   };
 
   return (
-    <div className="relative w-[740px] h-[550px] md:h-[650px] mt-6">
+    <div className="relative xl:h-[550px] md:h-[500px] lg:mt-6 max-lg:mt-8 mb-12">
       <div id="default-carousel" className="relative" data-carousel="static">
-        <div className="overflow-hidden h-[600px] md:h-[600px] w-[740px] relative rounded-lg">
-          <div className="duration-700 ease-in-out z-50" data-carousel-item>
+        <div className="overflow-hidden max-xl:h-[300px] lg:h-[600px] relative rounded-lg">
+          <div className="duration-700 ease-in-out z-50 max-md:mt-10" data-carousel-item>
             {product?.images.map((image, index) => (
               <div
                 key={index}
-                className={`duration-700 ease-in-out ${
+                className={`duration-700 ease-in-out max-md:w-[300px] ${
                   index === activeSlide ? "block" : "hidden"
                 }`}
                 data-carousel-item
@@ -28,7 +28,7 @@ export const ProductDisplay = ({ product }) => {
                   img={image}
                   zoomScale={1.4}
                   transitionTime={0.8}
-                  className="block absolute top-1/2 left-1/2 h-[600px] md:h-[700px] w-[740px] -translate-x-1/2 -translate-y-1/2"
+                  className="block absolute top-1/2 left-1/2 max-xl:h-[300px] xl:h-[600px] md:h-[500px] max-md:w-[400px] max-xl:w-[600px] lg:w-[740px] -translate-x-1/2 -translate-y-1/2"
                   alt={`Slide ${index + 1}`}
                 />
               </div>

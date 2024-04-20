@@ -24,7 +24,7 @@ export const SellerData = ({ userData, product }) => {
   }
 
   return (
-    <div className="flex-col relative mt-6 space-y-6 col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
+    <div className="flex-col max-md:w-[400px] relative mt-6 space-y-6 col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
       <div className="flex w-full items-center justify-between space-x-6 p-6">
           <div className="flex-1 truncate cursor-pointer" onClick={()=>{goToUserADs(userData?._id)}}>
             <div className="flex items-center space-x-3">
@@ -68,7 +68,7 @@ export const SellerData = ({ userData, product }) => {
             <div className="flex my-2 h-[50px] justify-center items-center cursor-pointer bg-red-300 rounded-2xl hover:bg-red-400">
               <a
                 onClick={()=>{handleChatting()}}
-                className="relative -mr-px inline-flex w-[480px] flex-1 items-center justify-center gap-x-1 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
+                className="relative -mr-px inline-flex max-md:w-[320px] md:w-[480px] flex-1 items-center justify-center gap-x-1 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
               >
                 <svg
                   className="h-5 w-5 text-red-600"
@@ -87,7 +87,7 @@ export const SellerData = ({ userData, product }) => {
             product?.contact_type.includes("phone")) && (
             <div className="flex my-2 h-[50px] justify-center cursor-pointer items-center bg-red-300 rounded-2xl hover:bg-red-400">
               <span
-                className="relative -mr-px inline-flex w-[480px] flex-1 items-center justify-center gap-x-1 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
+                className="relative -mr-px inline-flex max-md:w-[320px] md:w-[480px] flex-1 items-center justify-center gap-x-1 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
                 onClick={handleShowPhone}
               >
                 <svg

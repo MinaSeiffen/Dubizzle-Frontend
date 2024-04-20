@@ -17,7 +17,7 @@ export const RelatedProducts = ({ subcategoryName, productId }) => {
   }, [subcategoryName, productId]);
 
   return (
-    <div className="w-[740px] p-2 relative">
+    <div className="xl:w-[740px] max-md:w-[400px] p-2 relative">
       <h1 className="mt-6 mb-2 block font-sans text-3xl font-bold leading-snug tracking-normal text-black antialiased">
         Related Products
       </h1>
