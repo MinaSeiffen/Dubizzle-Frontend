@@ -69,7 +69,7 @@ export default function Header({ profile }) {
 
           <div className="my-2 mx-2 md:container">
             <div className="md:grid md:grid-flow-col md:gap-1 dis-flex">
-              <div className="md:flex md:justify-center z-99">
+              {/* <div className="md:flex md:justify-center z-99">
                 <DropDownList
                   props={
                     <button
@@ -82,7 +82,7 @@ export default function Header({ profile }) {
                     </button>
                   }
                 ></DropDownList>
-              </div>
+              </div> */}
 
               <div className="flex col-span-2 hidecontent">
                 <input

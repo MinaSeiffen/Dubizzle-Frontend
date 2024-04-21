@@ -38,11 +38,13 @@ export default function FooterResponsive() {
 
             </div>
         </div>
-        <div className='grid bg-gray-400 h-10 justify-center items-center' style={{ fontSize: "12px", background: "#edeeee" }}>
+        <div className='md:hidden block'>
+        <div className='grid bg-gray-400 h-10 justify-center items-center ' style={{ fontSize: "12px", background: "#edeeee" }}>
             <div>
                 <span className='font-bold'> Classifieds in Egypt </span> . © 2024 Dubizzle
 
             </div>
+        </div>
         </div>
     </>
 }

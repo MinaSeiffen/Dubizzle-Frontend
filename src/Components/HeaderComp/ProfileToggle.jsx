@@ -49,7 +49,7 @@ function ProfileToggle({ setGoogle, setFacebook, setData, profile }) {
         </p>
 
         {showProfileList && (
-          <div className="profile absolute right-0 bg-white text-black shadow-2xl overflow-y-scroll  top-12 rounded-sm w-vw-21/100  h-vh-80/100">
+          <div className="profile absolute right-0 bg-white text-black shadow-2xl overflow-y-scroll  top-12 rounded-sm w-vw-21/100  h-vh-50/100">
             <div className="border-b pb-4 border-gray-300">
               <div className="name flex p-4 gap-4 items-center  relative text-sm">
                 <span className="bg-red-50 text-2xl font-bold text-red-600 w-16 h-16 flex justify-center items-center  rounded-full">
@@ -76,13 +76,13 @@ function ProfileToggle({ setGoogle, setFacebook, setData, profile }) {
               </div>
             </div>
             <div className="border-b border-gray-300">
-              <div className="flex items-center ps-4 h-12 bg-red-50 hover:bg-slate-100 cursor-pointer">
+              {/* <div className="flex items-center ps-4 h-12 bg-red-50 hover:bg-slate-100 cursor-pointer">
                 <img src={Wallet} width={23} height={21} />
                 <div className="ms-3 h-10">
                   <p style={{ marginTop: "-2px" }}>Dubbizle Wallet</p>
                   <p className="text-xs">Balance: EGP 0</p>
                 </div>
-              </div>
+              </div> */}
               <div className="flex items-center ps-4 h-11 hover:bg-slate-100 cursor-pointer">
                 <div className="w-6 flex justify-center">
                   <img src={myAds} width={23} height={24} />
@@ -106,27 +106,27 @@ function ProfileToggle({ setGoogle, setFacebook, setData, profile }) {
                   Favourite
                 </p>
               </div>
-              <div className="flex items-center ps-4 h-11 hover:bg-slate-100 cursor-pointer">
+              {/* <div className="flex items-center ps-4 h-11 hover:bg-slate-100 cursor-pointer">
                 <div className="w-6 flex justify-center">
                   <LuEye className="w-6 h-5" />
                 </div>
                 <p className="ms-3">Public Profile</p>
-              </div>
-              <div className="flex items-center ps-4 h-11 hover:bg-slate-100 cursor-pointer">
+              </div> */}
+              {/* <div className="flex items-center ps-4 h-11 hover:bg-slate-100 cursor-pointer">
                 <div className="w-6 flex justify-center">
                   <img src={BusinessPackage} width={22} height={24} />
                 </div>
                 <p className="ms-3">Buy Discounted Packages</p>
-              </div>
-              <div className="flex items-center ps-4 h-11 hover:bg-slate-100 cursor-pointer">
+              </div> */}
+              {/* <div className="flex items-center ps-4 h-11 hover:bg-slate-100 cursor-pointer">
                 <div className="w-6 flex justify-center">
                   <img src={BoughtPackage} width={23} height={24} />
                 </div>
                 <p className="ms-3">Bought Packages & Billing</p>
-              </div>
+              </div> */}
             </div>
 
-            <div className="blogHelp border-b border-gray-300">
+            {/* <div className="blogHelp border-b border-gray-300">
               <div className="flex items-center ps-4 h-11 hover:bg-slate-100 cursor-pointer">
                 <div className="w-6 flex justify-center">
                   <img src={Blog} width={23} height={24} />
@@ -145,7 +145,7 @@ function ProfileToggle({ setGoogle, setFacebook, setData, profile }) {
                 </div>
                 <p className="ms-3">Setting</p>
               </div>
-            </div>
+            </div> */}
             <div className="flex items-center ps-4 h-11 hover:bg-slate-100 cursor-pointer">
               <div className="w-6 flex justify-center">
                 <img src={Logout} width={23} height={24} />

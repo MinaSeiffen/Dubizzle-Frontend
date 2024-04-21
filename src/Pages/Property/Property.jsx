@@ -19,7 +19,7 @@ const Property = () => {
                     <CategoriesCard subcatName={"Apartments for Sale"} hidden={""}></CategoriesCard>
                 </div>
                 <div>
-                    <FeaturedAgencies />
+                    {/* <FeaturedAgencies /> */}
                 </div>
             </div>
         </>

@@ -49,9 +49,9 @@ export default function Home() {
 
         <div  style={{ position: 'relative'}} className='md:mt-36 md:container '  >
 
-            <CategorySub></CategorySub>
+            {/* <CategorySub></CategorySub> */}
             <DubbizleSlider />
-            <PopularCategories></PopularCategories>
+            {/* <PopularCategories></PopularCategories> */}
 
 
             <CategoriesCard subcatName={"Cars for sale"} hidden={""} ></CategoriesCard>
@@ -60,6 +60,8 @@ export default function Home() {
             <CategoriesCard subcatName={"Apartments for Sale"} hidden={""}></CategoriesCard>
             <CategoriesCard subcatName={"Villas For Sale"} hidden={""} ></CategoriesCard>
             <CategoriesCard subcatName={"Villas For Rent"} hidden={""}></CategoriesCard>
+            <CategoriesCard subcatName={"Mobile Phones"} hidden={""}></CategoriesCard>
+            <CategoriesCard subcatName={"Tablets"} hidden={""}></CategoriesCard>
             <DropDwonCategoryResponsive></DropDwonCategoryResponsive>
             <FooterResponsive></FooterResponsive>
         </div>

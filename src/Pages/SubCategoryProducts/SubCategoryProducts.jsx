@@ -86,10 +86,10 @@ const SubCategoryProducts = () => {
         <div className="mt-32 xl:mt-44 ">
         <div className="flex justify-between  w-full   mb-3">
           <p className="text-2xl font-bold">In Egypt</p>
-          <div className={`${styles.btnSaveSearch}`}>
+          {/* <div className={`${styles.btnSaveSearch}`}>
             <FaRegHeart className="mr-2 w-6 text-xl text-red-600" /> 
            <span> Save Search</span>
-          </div>
+          </div> */}
         </div>
         </div>
         <div className="flex flex-wrap mt-4 xl:mt-5 ">
@@ -113,10 +113,10 @@ const SubCategoryProducts = () => {
             </div>
             <div>
               <div className="text-lg mt-2 font-bold ms-4">Locations</div>
-              <select className={`${stylesForm.formControl} hidden xl:block`}>
+              {/* <select className={`${stylesForm.formControl} hidden xl:block`}>
                 <option>Egypt</option>
                 <option>see all ads in all Egypt</option>
-              </select>
+              </select> */}
               <div className="mt-4">
                 <p className="font-bold text-sm ms-4">Egypt</p>
                 <div className="ms-7">
@@ -163,7 +163,7 @@ const SubCategoryProducts = () => {
                   />
                 </div>
               </div>
-              <div className="ms-2">
+              {/* <div className="ms-2">
                 <p className="font-bold text-md mb-2 ms-4">CONDITION</p>
                 <div className="ms-4">
                   <div className="flex">
@@ -203,14 +203,14 @@ const SubCategoryProducts = () => {
                     <p className="text-sm mt-0.5">New</p>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
-          <div className=" w-full xl:w-3/4">
+          <div className=" w-full mt-2 xl:w-3/4">
             <div className="flex justify-between mt-5 mb-4 pb-4 border-b border-gray-300">
               <div className="hidden xl:block">
               <div className="flex">
-                <div className="inline-flex">
+                {/* <div className="inline-flex">
                   <label
                     className="relative flex cursor-pointer  mr-4"
                     htmlFor="checkbox"
@@ -224,11 +224,11 @@ const SubCategoryProducts = () => {
                       <MdOutlineCheck />
                     </div>
                   </label>
-                </div>
-                <p >Show Verified Accounts first</p>
+                </div> */}
+                {/* <p >Show Verified Accounts first</p> */}
               </div>
               </div>
-              <div onClick={toggleSortedList} className="relative hidden  xl:block">
+              {/* <div onClick={toggleSortedList} className="relative hidden  xl:block">
                 <p className="font-bold text-sm hover:cursor-pointer flex">
                   SORT BY:{" "}
                   <span className="text-sm font-thin ps-4 flex">
@@ -266,7 +266,7 @@ const SubCategoryProducts = () => {
                     ))}
                   </ul>
                 )}
-              </div>
+              </div> */}
             </div>
             <div>
               {currentProducts && currentProducts.length > 0 ? (

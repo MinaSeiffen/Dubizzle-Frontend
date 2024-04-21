@@ -100,8 +100,8 @@ const SideMenu = () => {
                 </span>
                 <FontAwesomeIcon icon={faChevronRight} />
               </li>
-                <hr className="h-1" />
-              <li
+                {/* <hr className="h-1" /> */}
+              {/* <li
                 className={`flex items-center cursor-pointer justify-between py-2 px-4 my-1 text-black rounded-lg hover:bg-gray-50 ${
                   selectedCategory === "Jobs" && "bg-gray-50"
                 }`}
@@ -164,8 +164,8 @@ const SideMenu = () => {
                 </span>
                 <FontAwesomeIcon icon={faChevronRight} />
               </li>
-              <hr className="h-1" />
-              <li
+              <hr className="h-1" /> */}
+              {/* <li
                 className={`flex items-center cursor-pointer justify-between py-2 px-4 my-1 text-black rounded-lg hover:bg-gray-50 ${
                   selectedCategory === "Pet" && "bg-gray-50"
                 }`}
@@ -227,7 +227,7 @@ const SideMenu = () => {
                   Businesses & Industrial
                 </span>
                 <FontAwesomeIcon icon={faChevronRight} />
-              </li>
+              </li> */}
                 
             </ul>
           </div>
