@@ -120,7 +120,7 @@ export default function Header({ profile }) {
                     </div> */}
                   </>
                 )}
-                <div className="md:relative hidecontent">
+                <div className="md:relative hidecontent flex justify-center">
                   <div className="flex item-center h-3 font-bold">
                     {!facebook && !google && !data && !profile ? (
                       <Login
