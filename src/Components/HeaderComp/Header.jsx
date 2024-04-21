@@ -101,9 +101,9 @@ export default function Header({ profile }) {
               </div>
 
               <div className=" grid grid-flow-col ">
-                <div className="md:grid md:h-12 md:font-bold text-xl md:text-center items-center sm:visible hidden">
+                {/* <div className="md:grid md:h-12 md:font-bold text-xl md:text-center items-center sm:visible hidden">
                   <button>English</button>
-                </div>
+                </div> */}
                 {profile && (
                   <>
                     <div className="text-center hidecontent">
