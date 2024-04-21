@@ -59,6 +59,15 @@ const ProductCardHorizontal = ({ product }) => {
     }
   };
 
+  const showPrice = (number) => {
+    const formattedNumber = new Intl.NumberFormat("en-EG", {
+      style: "currency",
+      currency: "EGP",
+      minimumFractionDigits: 0, // Specifies the minimum number of fraction digits
+      maximumFractionDigits: 2,
+    }).format(number);
+    return formattedNumber.replace(/\.00$/, "");
+  };
   return (
     <>
       <div className="flex items-center justify-center mb-3">
@@ -75,7 +84,7 @@ const ProductCardHorizontal = ({ product }) => {
           <div className="p-4 w-full border border-slate-20 border-l-0 rounded-r-lg">
             <div className="flex justify-between  w-full">
               <h3 className=" block font-sans text-2xl font-bold uppercase leading-relaxed tracking-normal text-red-600 antialiased">
-                EGP {product?.price}
+                EGP {showPrice(product?.price)}
               </h3>
               <span>
                 <button

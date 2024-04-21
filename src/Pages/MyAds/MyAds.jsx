@@ -1,11 +1,6 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import useRemoveFromFavourite from "../../Hooks/useRemoveFromFavourite";
-
+import { useEffect } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { LuBath } from "react-icons/lu";
-import { PiBedDuotone } from "react-icons/pi";
 import CategorySub from "../../Components/CategorySubComp/CategorySub";
 import useGetMyAdds from "../../Hooks/useGetMyAdds";
 import useDeleteProduct from "../../Hooks/useDeleteProduct";
@@ -40,13 +35,20 @@ function MyAds() {
     const hoursDifference = Math.floor(
       (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
     );
+    const minutesDifference = Math.floor(
+      (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+    );
 
     if (daysDifference > 0) {
       return `${daysDifference} day${daysDifference > 1 ? "s" : ""} ago`;
-    } else {
+    } else if (hoursDifference > 0) {
       return `${hoursDifference} hour${hoursDifference > 1 ? "s" : ""} ago`;
+    } else if (minutesDifference > 0) {
+      return `${minutesDifference} minute${minutesDifference > 1 ? "s" : ""} ago`;
+    } else {
+      return 'just now';
     }
-  };
+};
 
   useEffect(()=>{
     getMyAdds();
@@ -105,7 +107,7 @@ function MyAds() {
                     </div>
                     <div className="flex py-1">
                       <p className="text-sm text-gray-700">
-                        {formatDateDifference(catData.updatedAt)}
+                      {formatDateDifference(catData.updatedAt)}
                       </p>
                     </div>
                   </div>
