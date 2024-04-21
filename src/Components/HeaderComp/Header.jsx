@@ -113,11 +113,11 @@ export default function Header({ profile }) {
                         </button>
                       </Link>
                     </div>
-                    <div className=" md:text-center max-md:hidden ">
+                    {/* <div className=" md:text-center max-md:hidden ">
                       <button className="text-center">
                         <FaRegBell className="h-12 text-xl" />
                       </button>
-                    </div>
+                    </div> */}
                   </>
                 )}
                 <div className="md:relative hidecontent">
