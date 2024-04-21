@@ -1,4 +1,5 @@
 import useLogin from "./useLogin";
+import toast from "react-hot-toast"
 
 
 const useLoginWithEmail = () => {
@@ -17,9 +18,11 @@ const useLoginWithEmail = () => {
                 }),
             });
             
-          const { accessToken } = await response.json();
+          const { accessToken , message } = await response.json();
           
           if (!response.ok) {
+            toast.error(message)
+            window.location.reload();
               setToken(null);
               setData(null)
               localStorage.removeItem("jwt");
