@@ -1,6 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import useRemoveFromFavourite from "../../Hooks/useRemoveFromFavourite";
+
 import { FaRegTrashAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { LuBath } from "react-icons/lu";
+import { PiBedDuotone } from "react-icons/pi";
 import CategorySub from "../../Components/CategorySubComp/CategorySub";
 import useGetMyAdds from "../../Hooks/useGetMyAdds";
 import useDeleteProduct from "../../Hooks/useDeleteProduct";
@@ -57,9 +62,9 @@ function MyAds() {
   return (
     <>
     <div className="container w-full">
-    <CategorySub></CategorySub>
+    {/* <CategorySub></CategorySub> */}
     <div>
-      <p className="text-gray-500">Profile</p>
+      <p className="text-gray-500 pt-7">Profile</p>
       <p className="text-2xl font-semibold pb-2 border-b mt-3 mb-6">Manage and view your Ads</p>
     </div>
       <div className="">
@@ -107,7 +112,7 @@ function MyAds() {
                     </div>
                     <div className="flex py-1">
                       <p className="text-sm text-gray-700">
-                      {formatDateDifference(catData.updatedAt)}
+                        {formatDateDifference(catData.updatedAt)}
                       </p>
                     </div>
                   </div>

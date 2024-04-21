@@ -1,8 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import {
+  likedProductAction,
+} from "../../Store/Slices/Favorites";
+import { useDispatch, useSelector } from "react-redux";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { useEffect } from "react";
 import useAddToFavourite from "../../Hooks/useAddToFavourite"
 import useRemoveFromFavourite from "../../Hooks/useRemoveFromFavourite"
 
@@ -12,6 +16,11 @@ const SellerProfile = ({ userData, userAds }) => {
   const { RemoveProductFromFavourite } = useRemoveFromFavourite();
 
   const favourites = useSelector((state) => state.favourite.favourite);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(likedProductAction());
+  }, []);
 
   let favouritesIds = [];
   if (favourites !== undefined) {
@@ -69,20 +78,20 @@ const SellerProfile = ({ userData, userAds }) => {
               ? userData?.profile.avatar
               : `https://ui-avatars.com/api/?name=${userData.profile.name}&background=FF9C9C&color=fff`
           }
-          className="relative w-[220px] top-12 object-cover rounded-3xl max-lg:w-[180px] "
+          className="relative w-[160px] top-12 object-cover rounded-3xl max-lg:w-[140px] "
           alt=""
         />
         <div className="flex max-lg:flex-col ">
-        <div className="container absolute right-2/4 top-12 max-lg:left-40 max-lg:top-8 max-md:w-fit">
-        <h1 className="absolute top-32 right-20 max-lg:relative max-lg:left-36 max-lg:top-36 font-bold text-5xl lg:w-28 max-lg:text-2xl max-md:left-16 max-md:top-60 max-md:w-fit max-lg:w-fit">
+        <div className="container absolute lg-le top-12  max-lg:top-8 max-md:w-fit">
+        <h1 className="absolute top-32 right-1/2 max-lg:relative  max-lg:top-36 font-bold text-4xl lg:w-28 max-lg:text-2xl max-md:left-16 max-md:top-60 max-md:w-fit max-lg:w-fit">
           {userData?.profile?.name}
         </h1>
       </div>
         <div className="relative max-lg:flex-row max-lg:left-12 max-lg:bottom-3">
-          <h2 className="font-bold relative left-6 top-20 w-44 max-lg:flex-row max-lg:mb-3 max-lg:left-2 max-md:w-fit">
+          <h2 className="font-bold text-sm relative left-6 top-20 w-36 max-lg:flex-row max-lg:mb-3 max-lg:left-2 max-md:w-fit">
             {userAds?.length} published ads
           </h2>
-          <button className="group relative left-2 top-24 h-12 w-[200px] overflow-hidden rounded-lg bg-red-50 text-lg shadow max-lg:w-52 max-lg:left-2 max-lg:top-20 max-md:w-[160px]">
+          <button className="group relative left-2 top-24 h-8 w-[150px] overflow-hidden rounded-lg bg-red-50 text-sm shadow max-lg:w-52 max-lg:left-2 max-lg:top-20 max-md:w-[160px]">
             <div className="absolute inset-0 w-3 bg-red-500 transition-all duration-[250ms] ease-out group-hover:w-full" />
             <span className="relative text-black font-semibold max-md:text-sm group-hover:text-white">
               <FontAwesomeIcon icon={faShareNodes} /> Share profile
@@ -91,16 +100,16 @@ const SellerProfile = ({ userData, userAds }) => {
         </div>
         </div>
       </div>
-      <div className="relative bottom-5 left-40 w-[1200px] max-lg:hidden">
+      <div className="relative bottom-5 left-[72px] w-[850px] max-lg:hidden">
         <hr className="relative left-[500px] border-1 border-black w-9/12"/>
       </div>
-      <div className="relative lg:w-fit max-lg:top-16 max-md:container max-lg:container lg:left-[700px] max-md:-left-[75px]">
-        <div className="grid max-lg:w-[580px] lg:w-[930px] lg:top-40 md:grid-cols-2 lg:grid-cols-3 max-lg:mb-16 max-md:justify-center max-md:items-center">
+      <div className="relative lg:w-fit max-lg:top-16 max-md:container max-lg:container lg:left-[600px] max-md:-left-[75px]">
+        <div className="grid max-lg:w-[580px] lg:w-[680px] lg:top-40 md:grid-cols-2 lg:grid-cols-3 max-lg:mb-16 max-md:justify-center max-md:items-center">
           {Array.isArray(userAds) && userAds.length > 0 ? (
             userAds.map((product) => (
               <div
                 key={product.id}
-                className="my-2 w-fit border card-category rounded-t-xl cursor-pointer max-lg:w-[200px]"
+                className="my-2 border w-52 rounded-t-xl cursor-pointer"
                 onClick={(e) => {
                   e.stopPropagation();
                   goToDetailsPage(product._id);
@@ -108,7 +117,7 @@ const SellerProfile = ({ userData, userAds }) => {
               >
                 <img
                   alt="example"
-                  className="w-full h-40 rounded-t-xl object-cover"
+                  className="w-full h-32 rounded-t-xl object-cover"
                   src={product.images[0]}
                 />
                 <div className="p-3">
@@ -117,17 +126,17 @@ const SellerProfile = ({ userData, userAds }) => {
                       EGP {product.price}
                     </p>
                     <button
-                        onClick={(e) => {
-                          e.stopPropagation();
+                      onClick={(e) => {
+                        e.stopPropagation();
                           addOrRemoveFavourite(product._id);
-                        }}
-                      >
+                      }}
+                    >
                         {check(product._id) ? (
                           <FaHeart className="text-red-500" />
                         ) : (
                           <FaRegHeart />
                         )}
-                      </button>
+                    </button>
                   </div>
                   <div className="my-1 grid items-center min-h-12 ">
                     <p className="min-w-full max-h-12 overflow-hidden">

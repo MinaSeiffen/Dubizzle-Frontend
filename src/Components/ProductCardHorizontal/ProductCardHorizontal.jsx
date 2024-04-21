@@ -1,11 +1,37 @@
-import { FaRegHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
 import { BsChatDots } from "react-icons/bs";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import useAddToFavourite from "../../Hooks/useAddToFavourite";
+import useRemoveFromFavourite from "../../Hooks/useRemoveFromFavourite";
+import { useSelector } from "react-redux";
 
 const ProductCardHorizontal = ({ product }) => {
     useEffect(() => {}, [product]);
+    const { addProductToFavourite } = useAddToFavourite();
+  const { RemoveProductFromFavourite } = useRemoveFromFavourite();
+
+  const favourites = useSelector((state) => state.favourite.favourite);
+
+  let favouritesIds = [];
+  if (favourites !== undefined) {
+    favouritesIds = favourites.map((product) => {
+      return product._id;
+    });
+  }
+
+  function check(id) {
+    return favouritesIds.find((prdId) => prdId == id);
+  }
+
+  const addOrRemoveFavourite = (producId) => {
+    if (!check(producId)) {
+      addProductToFavourite(producId);
+    } else {
+      RemoveProductFromFavourite(producId);
+    }
+  };
 
     const formatDateDifference = (updatedAt) => {
       const currentDate = new Date();
@@ -59,7 +85,18 @@ const ProductCardHorizontal = ({ product }) => {
                  {showPrice(product?.price)}
               </h3>
               <span>
-                <FaRegHeart className="text-red-600 text-xl" />
+              <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          addOrRemoveFavourite(product?._id);
+                        }}
+                      >
+                        {check(product?._id) ? (
+                          <FaHeart className="text-red-500" />
+                        ) : (
+                          <FaRegHeart />
+                        )}
+                      </button>
               </span>
             </div>
             <h5 className="pt-2 h-vh-15/100 block font-sans text-lg font-semibold text-black">

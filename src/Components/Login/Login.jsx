@@ -138,7 +138,7 @@ function Login({
             </p>
             <div className="flex flex-col justify-center items-center my-4">
               <div
-                className="flex flex-row bg-white px-24 py-3 w-[480px] text-black border rounded-md border-red-500 justify-start items-center cursor-pointer"
+                className="flex flex-row bg-white px-24 py-3 w-[385px] text-black border rounded-md border-red-500 justify-start items-center cursor-pointer"
                 onClick={handleGoogleButtonClick}
               >
                 <svg
@@ -228,7 +228,7 @@ function Login({
 
             <div className="flex flex-col justify-center items-center my-4">
               <div
-                className="flex flex-row bg-white px-24 py-3 w-[480px] text-black border rounded-md border-red-500 justify-start items-center cursor-pointer"
+                className="flex flex-row bg-white px-24 py-3 w-[385px] text-black border rounded-md border-red-500 justify-start items-center cursor-pointer"
                 onClick={handleFaceBookButtonClick}
               >
                 <svg
@@ -377,7 +377,7 @@ function Login({
             </p>
             <div className="flex flex-col justify-center items-center my-4">
               <div
-                className="flex flex-row bg-white px-24 py-3 w-[480px] text-black border rounded-md border-red-500 justify-start items-center cursor-pointer"
+                className="flex flex-row bg-white px-24 py-3 w-[385px] text-black border rounded-md border-red-500 justify-start items-center cursor-pointer"
                 onClick={handleGoogleButtonClick}
               >
                 <svg
@@ -467,7 +467,7 @@ function Login({
 
             <div className="flex flex-col justify-center items-center my-4">
               <div
-                className="flex flex-row bg-white px-24 py-3 w-[480px] text-black border rounded-md border-red-500 justify-start items-center cursor-pointer"
+                className="flex flex-row bg-white px-24 py-3 w-[385px] text-black border rounded-md border-red-500 justify-start items-center cursor-pointer"
                 onClick={handleFaceBookButtonClick}
               >
                 <svg

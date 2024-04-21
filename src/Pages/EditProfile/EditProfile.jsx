@@ -25,7 +25,7 @@ function EditProfile() {
             year: ""
           },
           gender: "",
-          about: "",
+          // about: "",
           phoneNumber: "",
           password: "",
           avatar: "",
@@ -36,7 +36,7 @@ function EditProfile() {
         })
   // const [userDATA,setUserDATA] = useState(null)
 
-  for(let i = 2024; i >= 1950; i--) {
+  for(let i = 2006; i >= 1950; i--) {
     yearOptions.push(i)
   }
   for (let i = 1; i <= 12; i++) {
@@ -50,6 +50,7 @@ function EditProfile() {
 
   const { UpdateProfile } = useUpdateProfile()
   const submitData = (data) => {
+    console.log(data)
     // e.preventDefault();
     let userInfo = {
       ...updateUser,
@@ -61,7 +62,7 @@ function EditProfile() {
         year: data.year,
       },
       gender: data.gender,
-      about: data.about,
+      // about: data.about,
       phoneNumber: data.phone
     }
     UpdateProfile(userInfo)
@@ -89,8 +90,9 @@ function EditProfile() {
     
  
 
-  return (<>
-    <div className="xl:w-vw-70/100 md:w-vw-90/100 flex mx-auto mb-12 mt-5 py-4 px-6 rounded-md border border-gray-300">
+  return (
+  <div className='pt-9'>
+    <div className="xl:w-vw-70/100  md:w-vw-90/100 flex mx-auto mb-12 mt-5 py-4 px-6 rounded-md border border-gray-300">
       <form onSubmit={handleSubmit(submitData)} className='w-full'>
         <p className='text-xl font-bold border-0 border-b pb-4 mb-4'>Edit profile</p>
         <div className='personal-info flex gap-1 pb-10 border-b border-gray-200'>
@@ -143,9 +145,9 @@ function EditProfile() {
               </select>
               {/* <SelectComponent name="Select your gender"  selectedOptions={genderoptions} selectWidth="full" maxHeight="h-vh-17/100" /> */}
             </div>
-            <div className='mt-5'>
+            {/* <div className='mt-5'>
               <textarea name='about'  {...register("about")} defaultValue="About me" className='p-2  w-full h-28 text-sm md:h-36 border outline-none rounded-md'></textarea>
-            </div>
+            </div> */}
           </div>
           <div className='p-4 hidden  sm:w-1/2 sm:block mt-3'>
             <div className='w-3/4 border border-gray-300 p-3 mt-1'>
@@ -215,7 +217,7 @@ function EditProfile() {
       <p className='text-sm inline sm:block'>Fill the form and your request will be directed to our Customer Support Team</p>
       <p className='mt-5 font-bold border-b w-fit block border-red-500 sm:border-black'>Submit request</p>
     </div>
-  </>)
+  </div>)
 }
 
 export default EditProfile;

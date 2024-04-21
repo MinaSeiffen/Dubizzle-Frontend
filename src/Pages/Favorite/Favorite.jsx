@@ -104,8 +104,8 @@ export default function Favorite() {
 };
 
   return (
-    <div className="container">
-      <CategorySub></CategorySub>
+    <div className="container pt-7">
+      {/* <CategorySub></CategorySub> */}
       <div className="min-h-48">
         <Box sx={{ width: "100%" }}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>

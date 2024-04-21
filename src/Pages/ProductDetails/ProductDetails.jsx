@@ -22,9 +22,9 @@ export const ProductDetails = () => {
        <div className="fixed z-50 md:hidden w-full block bottom-0">
        <ProductDetailsFooter product={product}/>
        </div>
-      <div className="container pt-4">
+      {/* <div className="container pt-4">
         <CategorySub />
-      </div>
+      </div> */}
       <div className="container md:mb-4 mb-12 max-xl:container max-xl:justify-center max-xl:items-center flex flex-col xl:flex-row ">
         <div className=" flex-col pr-3 xl:w-vw-50/100 max-w-full">
           <ProductDisplay product={product} />
