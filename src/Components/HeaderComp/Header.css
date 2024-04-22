@@ -9,6 +9,21 @@
     margin-right: 5px;
 }
 
+.toglll > div{
+    margin-top: 0 !important;
+}
+.togllogin > div{
+    margin-top: 0 !important;
+    background-color: rgb(222, 7, 7);
+    color: white;
+    /* padding: 11px; */
+    border-radius: 8px;
+    padding: 11px 22px;
+    
+}
+.togllogin > div:hover{
+    background-color: rgb(190, 8, 8);
+}
 .input-class {
 
     /* background-color: greenyellow; */
@@ -20,7 +35,9 @@
     border-color: aqua !important;
 }
 
-.tt1 {}
+.tt1 {
+    /* width: 150px; */
+}
 
 .hidecontent {
    

@@ -63,12 +63,13 @@ export default function Header({ profile }) {
     <>
       <div className="relative w-full">
         <div className="bg-white border-b  z-10 md:fixed   sm:top-0 pt-3 w-full ">
-          <div className="md:border-0 border-b-2 md:p-0 pb-3">
+          {/* <div className="md:border-0 border-b-2 md:p-0 pb-3">
             <TopHeader />
-          </div>
+          </div> */}
 
           <div className="my-2 mx-2 md:container">
-            <div className="md:grid md:grid-flow-col md:gap-1 dis-flex">
+            <div className="md:grid md:grid-flow-col md:gap-1 justify-between dis-flex">
+            <TopHeader />
               {/* <div className="md:flex md:justify-center z-99">
                 <DropDownList
                   props={
@@ -84,7 +85,7 @@ export default function Header({ profile }) {
                 ></DropDownList>
               </div> */}
 
-              <div className="flex col-span-2 hidecontent">
+              <div className="flex col-span-3 w-vw-50/100 hidecontent">
                 <input
                   className="h-12 px-4 w-full border rounded-xl rounded-e-none "
                   type="text"
@@ -109,7 +110,7 @@ export default function Header({ profile }) {
                     <div className="text-center hidecontent">
                       <Link to={"/chat"}>
                         <button className=" text-center ">
-                          <IoChatbubbleOutline className="h-12 font-bold text-xl" />
+                          <IoChatbubbleOutline className="h-12 mr-3 font-bold text-2xl" />
                         </button>
                       </Link>
                     </div>
@@ -121,7 +122,8 @@ export default function Header({ profile }) {
                   </>
                 )}
                 <div className="md:relative hidecontent flex justify-center">
-                  <div className="flex item-center h-3 font-bold">
+                {profile && (
+                  <div className="flex items-center h-12 toglll  font-bold">
                     {!facebook && !google && !data && !profile ? (
                       <Login
                         google={google}
@@ -142,16 +144,40 @@ export default function Header({ profile }) {
                       />
                     )}
                   </div>
+                )}
+                {!profile && (
+                  <div className="flex items-center h-6 togllogin justify-self-end font-bold">
+                    {!facebook && !google && !data && !profile ? (
+                      <Login
+                        google={google}
+                        facebook={facebook}
+                        login={login}
+                        setFacebook={setFacebook}
+                        setGoogle={setGoogle}
+                        registerUser={registerUser}
+                        setData={setData}
+                        loginUser={loginUser}
+                      />
+                    ) : (
+                      <ProfileToggle
+                        setData={setData}
+                        setFacebook={setFacebook}
+                        setGoogle={setGoogle}
+                        profile={profile}
+                      />
+                    )}
+                  </div>
+                )}
                 </div>
 
-                <button
+                {profile &&(<button
                   onClick={() => {
                     navigate("/sell");
                   }}
-                  className={`col-span-3 h-12 border ${sellButton}  md:block bg-red-600 hover:bg-red-700 rounded-lg text-white font-bold tt1`}
+                  className={`col-span-4 w-40 ms-6 h-12 border ${sellButton}  md:block bg-red-600 hover:bg-red-700 rounded-lg text-white font-bold tt1`}
                 >
                   Sell
-                </button>
+                </button>)}
               </div>
             </div>
           </div>
